@@ -6,18 +6,17 @@
 
 <style>
 
-/* 🚑 MODO EMERGÊNCIA – FORÇAR VISIBILIDADE TOTAL */
-* {
-  display: revert !important;
+/* 🚑 MODO EMERGÊNCIA CONTROLADO (SEM QUEBRAR LAYOUT) */
+body,
+.header,
+.grid,
+.card,
+.card * {
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-body {
-  color: #000 !important;
-}
-
-/* 🔥 CORREÇÃO DEFINITIVA DO BACKGROUND 🔥 */
+/* 🔥 BACKGROUND */
 html, body {
   height: 100%;
 }
@@ -64,111 +63,4 @@ body {
 .card {
   background: rgba(255,255,255,0.9);
   border-radius: 18px;
-  padding: 18px;
-  text-align: center;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  transition: transform 0.25s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
-  max-width: 140px;
-  margin-bottom: 10px;
-}
-
-.card h3 {
-  margin: 6px 0;
-}
-
-/* 🎨 CORES DOS BOTÕES */
-.dragonair a { background: #fbc02d !important; color: #2b2b2b !important; }
-.luxray a    { background: #0d2a4a !important; }
-.machamp a   { background: #e65100 !important; }
-.tangela a   { background: #2e7d32 !important; }
-.glaceon a   { background: linear-gradient(135deg, #00e5ff, #0d2a4a) !important; }
-
-/* 🔥 BOTÕES DEFINITIVOS – TAMANHO AJUSTADO E BLINDADO */
-.card a {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-
-  margin-top: 8px !important;
-  padding: 6px 14px !important;
-
-  min-width: 110px;
-  min-height: 30px;
-
-  border-radius: 12px !important;
-  font-weight: bold !important;
-  font-size: 0.85rem;
-
-  text-decoration: none !important;
-  color: #ffffff !important;
-
-  background-color: #333 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  position: relative !important;
-  z-index: 10 !important;
-}
-
-/* 🛡️ SEGURANÇA FINAL DO CONTEÚDO */
-.header,
-.grid,
-.card,
-.card * {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="header">
-  <h1>📘 Planejamento PXG</h1>
-  <p>Registros históricos • Conquistas • Negociações</p>
-</div>
-
-<div class="grid">
-
-  <div class="card dragonair">
-    <img src="assets/shiny-dragonair.gif" alt="Shiny Dragonair">
-    <h3>🐉 Shiny Dragonair</h3>
-    <a href="registro-shiny-dragonair.html">Abrir registro</a>
-  </div>
-
-  <div class="card glaceon">
-    <img src="assets/shiny-glaceon.gif" alt="Shiny Glaceon">
-    <h3>❄️ Shiny Glaceon</h3>
-    <a href="registro-shiny-glaceon.html">Abrir registro</a>
-  </div>
-
-  <div class="card luxray">
-    <img src="assets/shiny-luxray.gif" alt="Shiny Luxray">
-    <h3>⚡ Shiny Luxray</h3>
-    <a href="registro-shiny-luxray.html">Abrir registro</a>
-  </div>
-
-  <div class="card machamp">
-    <img src="assets/shiny-machamp.gif" alt="Shiny Machamp">
-    <h3>👊 Shiny Machamp</h3>
-    <a href="registro-shiny-machamp.html">Abrir registro</a>
-  </div>
-
-  <div class="card tangela">
-    <img src="assets/shiny-tangela.gif" alt="Shiny Tangela">
-    <h3>🌿 Shiny Tangela</h3>
-    <a href="registro-shiny-tangela.html">Abrir registro</a>
-  </div>
-
-</div>
-
-</body>
-</html>
+  padding: 18
