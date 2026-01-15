@@ -7,10 +7,6 @@
 <style>
 
 /* BASE */
-html, body {
-  height: 100%;
-}
-
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -27,11 +23,6 @@ body {
   border-radius: 18px;
   text-align: center;
   box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-}
-
-.header p {
-  margin: 6px 0 0;
-  color: #444;
 }
 
 /* GRID */
@@ -58,60 +49,41 @@ body {
   transform: scale(1.05);
 }
 
-/* GIF PADRÃO (FERALIGATR SCALE) */
-.shiny-gif {
-  width: 120px;
-  height: auto;
+/* 🔥 PADRÃO DEFINITIVO DAS GIFS */
+.card img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
   margin-bottom: 10px;
   image-rendering: pixelated;
 }
 
-/* TITULO */
 .card h3 {
   margin: 6px 0;
 }
-
-/* BADGE */
-.badge {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 14px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 8px;
-}
-
-/* BADGES POR TIPO */
-.grass { background: #2e7d32; }
-.dragon { background: #c62828; }
-.electric { background: #fbc02d; color: #2b2b2b; }
-.fighting { background: #e65100; }
-.water { background: linear-gradient(135deg, #00bcd4, #0288d1); }
-.ice { background: linear-gradient(135deg, #00e5ff, #0288d1); }
 
 /* BOTÃO */
 .card a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 8px;
   padding: 6px 14px;
-  min-width: 120px;
-  min-height: 32px;
   border-radius: 12px;
   font-weight: bold;
   font-size: 0.85rem;
-  text-decoration: none;
   color: #fff;
-  background: #5e35b1;
-  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
 }
 
-.card a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
-}
+/* CORES */
+.dragonair a { background: #fbc02d; color:#2b2b2b; }
+.glaceon a   { background: linear-gradient(135deg,#00e5ff,#0288d1); }
+.luxray a    { background: #0d2a4a; }
+.machamp a   { background: #e65100; }
+.tangela a   { background: #2e7d32; }
+.blastoise a{ background: linear-gradient(135deg,#00bcd4,#0288d1); }
+.feraligatr a{ background: linear-gradient(135deg,#0d47a1,#26c6da); }
+.meganium a { background: linear-gradient(135deg,#b39ddb,#6a1b9a); }
 
 </style>
 </head>
@@ -125,60 +97,28 @@ body {
 
 <div class="grid">
 
-  <!-- SHINY DRAGONAIR -->
-  <div class="card">
-    <img src="assets/shiny-dragonair.gif" class="shiny-gif">
-    <h3>Shiny Dragonair</h3>
-    <span class="badge dragon">T1B • Dragon</span>
+  <div class="card dragonair">
+    <img src="assets/shiny-dragonair.gif">
+    <h3>🐉 Shiny Dragonair</h3>
     <a href="registro-shiny-dragonair.html">Abrir registro</a>
   </div>
 
-  <!-- SHINY LUXRAY -->
-  <div class="card">
-    <img src="assets/shiny-luxray.gif" class="shiny-gif">
-    <h3>Shiny Luxray</h3>
-    <span class="badge electric">T1C • Electric</span>
-    <a href="registro-shiny-luxray.html">Abrir registro</a>
+  <div class="card feraligatr">
+    <img src="assets/shiny-feraligatr.gif">
+    <h3>🐊 Shiny Feraligatr</h3>
+    <a href="registro-shiny-feraligatr.html">Abrir registro</a>
   </div>
 
-  <!-- SHINY MACHAMP -->
-  <div class="card">
-    <img src="assets/shiny-machamp.gif" class="shiny-gif">
-    <h3>Shiny Machamp</h3>
-    <span class="badge fighting">T1C • Fight</span>
-    <a href="registro-shiny-machamp.html">Abrir registro</a>
-  </div>
-
-  <!-- SHINY TANGELA -->
-  <div class="card">
-    <img src="assets/shiny-tangela.gif" class="shiny-gif">
-    <h3>Shiny Tangela</h3>
-    <span class="badge grass">T1C • Grass</span>
-    <a href="registro-shiny-tangela.html">Abrir registro</a>
-  </div>
-
-  <!-- SHINY MEGANIUM -->
-  <div class="card">
-    <img src="assets/shiny-meganium.gif" class="shiny-gif">
-    <h3>Shiny Meganium</h3>
-    <span class="badge grass">T1C • Grass</span>
-    <a href="registro-shiny-meganium.html">Abrir registro</a>
-  </div>
-
-  <!-- SHINY BLASTOISE -->
-  <div class="card">
-    <img src="assets/shiny-blastoise.gif" class="shiny-gif">
-    <h3>Shiny Blastoise</h3>
-    <span class="badge water">T1C • Water</span>
+  <div class="card blastoise">
+    <img src="assets/shiny-blastoise.gif">
+    <h3>🐢 Shiny Blastoise</h3>
     <a href="registro-shiny-blastoise.html">Abrir registro</a>
   </div>
 
-  <!-- SHINY FERALIGATR -->
-  <div class="card">
-    <img src="assets/shiny-feraligatr.gif" class="shiny-gif">
-    <h3>Shiny Feraligatr</h3>
-    <span class="badge water">T1C • Water</span>
-    <a href="registro-shiny-feraligatr.html">Abrir registro</a>
+  <div class="card meganium">
+    <img src="assets/shiny-meganium.gif">
+    <h3>🌸 Shiny Meganium</h3>
+    <a href="registro-shiny-meganium.html">Abrir registro</a>
   </div>
 
 </div>
