@@ -2,178 +2,163 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>📘 Planejamento PXG</title>
+<title>Shiny Meganium • PXG</title>
 
 <style>
-
-/* ================= BASE ================= */
-html, body {
-  height: 100%;
-}
-
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: url("assets/pokeballs-bg-v2.png") repeat;
-  background-size: 300px;
+  background: linear-gradient(135deg, #d1c4e9, #b39ddb);
+  color: #4a148c;
 }
 
-/* ================= HEADER ================= */
-.header {
-  max-width: 900px;
-  margin: 30px auto;
-  background: rgba(255,255,255,0.92);
-  padding: 22px;
-  border-radius: 18px;
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(74,20,140,0.35);
+}
+
+h1 {
   text-align: center;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  margin-bottom: 6px;
+  color: #4a148c;
 }
 
-.header p {
-  margin: 6px 0 0;
-  color: #444;
-}
-
-/* ================= GRID ================= */
-.grid {
-  max-width: 1100px;
-  margin: 30px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-  padding: 10px;
-}
-
-/* ================= CARD ================= */
-.card {
-  background: rgba(255,255,255,0.9);
-  border-radius: 18px;
-  padding: 18px;
+h2 {
   text-align: center;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  transition: transform 0.25s;
+  font-weight: normal;
+  font-size: 1rem;
+  margin-top: 0;
+  color: #6a1b9a;
 }
 
-.card:hover {
-  transform: scale(1.05);
+img {
+  display: block;
+  margin: 22px auto;
+  max-width: 200px;
+  filter: drop-shadow(0 6px 10px rgba(74,20,140,0.35));
 }
 
-/* ===== PADRONIZAÇÃO DEFINITIVA DAS GIFS ===== */
-.card img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  margin-bottom: 10px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
 }
 
-/* ================= TEXTO ================= */
-.card h3 {
-  margin: 6px 0;
+td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(74,20,140,0.2);
 }
 
-/* ================= BOTÃO BASE ================= */
-.card a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 8px;
-  padding: 6px 14px;
-  min-width: 120px;
-  min-height: 32px;
-  border-radius: 12px;
+td:first-child {
   font-weight: bold;
-  font-size: 0.85rem;
-  text-decoration: none;
+  width: 48%;
+  color: #4a148c;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* BADGE */
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #9575cd, #5e35b1);
   color: #fff;
-  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  margin: 0 auto 14px;
+  box-shadow: 0 4px 12px rgba(74,20,140,0.4);
 }
 
-.card a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+/* FOOTER */
+.footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6a1b9a;
 }
 
-/* ================= CORES POR SHINY ================= */
-.dragonair a {
-  background: #fbc02d;
-  color: #2b2b2b;
+/* BOTÃO VOLTAR */
+a {
+  display: block;
+  margin-top: 26px;
+  text-align: center;
+  color: #4a148c;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.glaceon a {
-  background: linear-gradient(135deg, #00e5ff, #0288d1);
+a:hover {
+  color: #311b92;
 }
-
-.luxray a {
-  background: #0d2a4a;
-}
-
-.machamp a {
-  background: #e65100;
-}
-
-.tangela a {
-  background: #2e7d32;
-}
-
-/* WATER TYPE */
-.blastoise a,
-.feraligatr a {
-  background: linear-gradient(135deg, #00bcd4, #0288d1);
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>📘 Planejamento PXG</h1>
-  <p>Registros históricos • Conquistas • Negociações</p>
+<div class="container">
+
+<h1>🌸 Registro de Negociação T1C</h1>
+<h2>PokeXGames • <strong>Shiny Meganium</strong></h2>
+
+<div style="text-align:center;">
+  <span class="badge">T1C • Grass Type</span>
 </div>
 
-<div class="grid">
+<img src="assets/shiny-meganium.gif" alt="Shiny Meganium">
 
-  <div class="card dragonair">
-    <img src="assets/shiny-dragonair.gif" alt="Shiny Dragonair">
-    <h3>🐉 Shiny Dragonair</h3>
-    <a href="registro-shiny-dragonair.html">Abrir registro</a>
-  </div>
+<table>
+  <tr>
+    <td>📅 Data</td>
+    <td>13/10/2024</td>
+  </tr>
 
-  <div class="card glaceon">
-    <img src="assets/shiny-glaceon.gif" alt="Shiny Glaceon">
-    <h3>❄️ Shiny Glaceon</h3>
-    <a href="registro-shiny-glaceon.html">Abrir registro</a>
-  </div>
+  <tr>
+    <td>🌿 Pokémon</td>
+    <td>Shiny Meganium</td>
+  </tr>
 
-  <div class="card luxray">
-    <img src="assets/shiny-luxray.gif" alt="Shiny Luxray">
-    <h3>⚡ Shiny Luxray</h3>
-    <a href="registro-shiny-luxray.html">Abrir registro</a>
-  </div>
+  <tr>
+    <td>🏷️ Categoria</td>
+    <td>T1C</td>
+  </tr>
 
-  <div class="card machamp">
-    <img src="assets/shiny-machamp.gif" alt="Shiny Machamp">
-    <h3>👊 Shiny Machamp</h3>
-    <a href="registro-shiny-machamp.html">Abrir registro</a>
-  </div>
+  <tr>
+    <td>💰 Valor Pago</td>
+    <td>30–50 KK + Mega Glalie ❄️</td>
+  </tr>
 
-  <div class="card tangela">
-    <img src="assets/shiny-tangela.gif" alt="Shiny Tangela">
-    <h3>🌿 Shiny Tangela</h3>
-    <a href="registro-shiny-tangela.html">Abrir registro</a>
-  </div>
+  <tr>
+    <td>💲 Preço por KK</td>
+    <td>R$ 3,50</td>
+  </tr>
 
-  <div class="card blastoise">
-    <img src="assets/shiny-blastoise.gif" alt="Shiny Blastoise">
-    <h3>🐢 Shiny Blastoise</h3>
-    <a href="registro-shiny-blastoise.html">Abrir registro</a>
-  </div>
+  <tr>
+    <td>💵 Valor Total</td>
+    <td>R$ 550 – 560</td>
+  </tr>
 
-  <div class="card feraligatr">
-    <img src="assets/shiny-feraligatr.gif" alt="Shiny Feraligatr">
-    <h3>🐊 Shiny Feraligatr</h3>
-    <a href="registro-shiny-feraligatr.html">Abrir registro</a>
-  </div>
+  <tr>
+    <td>🔁 Origem</td>
+    <td>Negociação envolvendo Mega Glalie</td>
+  </tr>
+
+  <tr>
+    <td>📝 Observações</td>
+    <td>Registro histórico de conquista pessoal no PXG</td>
+  </tr>
+</table>
+
+<div class="footer">
+💜 Registro estratégico • Planejamento PXG 💜
+</div>
+
+<a href="index.html">⬅ Voltar ao menu</a>
 
 </div>
 
