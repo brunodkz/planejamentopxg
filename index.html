@@ -2,163 +2,184 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Shiny Meganium • PXG</title>
+<title>📘 Planejamento PXG</title>
 
 <style>
+
+/* BASE */
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #d1c4e9, #b39ddb);
-  color: #4a148c;
+  background: url("assets/pokeballs-bg-v2.png") repeat;
+  background-size: 300px;
 }
 
-.container {
-  max-width: 700px;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.96);
-  padding: 28px;
-  border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(74,20,140,0.35);
-}
-
-h1 {
+/* HEADER */
+.header {
+  max-width: 900px;
+  margin: 30px auto;
+  background: rgba(255,255,255,0.92);
+  padding: 22px;
+  border-radius: 18px;
   text-align: center;
-  margin-bottom: 6px;
-  color: #4a148c;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
 }
 
-h2 {
+.header p {
+  margin: 6px 0 0;
+  color: #444;
+}
+
+/* GRID */
+.grid {
+  max-width: 1000px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  padding: 10px;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 18px;
+  padding: 18px;
   text-align: center;
-  font-weight: normal;
-  font-size: 1rem;
-  margin-top: 0;
-  color: #6a1b9a;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  transition: transform 0.25s;
 }
 
-img {
-  display: block;
-  margin: 22px auto;
-  max-width: 200px;
-  filter: drop-shadow(0 6px 10px rgba(74,20,140,0.35));
+.card:hover {
+  transform: scale(1.05);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 18px;
+/* GIF PADRÃO (FERALIGATR SCALE) */
+.shiny-gif {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+  image-rendering: pixelated;
 }
 
-td {
-  padding: 12px 10px;
-  border-bottom: 1px solid rgba(74,20,140,0.2);
-}
-
-td:first-child {
-  font-weight: bold;
-  width: 48%;
-  color: #4a148c;
-}
-
-tr:last-child td {
-  border-bottom: none;
+/* TITULO */
+.card h3 {
+  margin: 6px 0;
 }
 
 /* BADGE */
 .badge {
   display: inline-block;
-  background: linear-gradient(135deg, #9575cd, #5e35b1);
-  color: #fff;
-  padding: 6px 16px;
-  border-radius: 16px;
-  font-size: 0.85rem;
-  margin: 0 auto 14px;
-  box-shadow: 0 4px 12px rgba(74,20,140,0.4);
-}
-
-/* FOOTER */
-.footer {
-  margin-top: 24px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #6a1b9a;
-}
-
-/* BOTÃO VOLTAR */
-a {
-  display: block;
-  margin-top: 26px;
-  text-align: center;
-  color: #4a148c;
-  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 0.8rem;
   font-weight: bold;
+  color: #fff;
+  margin-bottom: 8px;
 }
 
-a:hover {
-  color: #311b92;
+/* BADGES POR TIPO */
+.grass { background: #2e7d32; }
+.dragon { background: #c62828; }
+.electric { background: #fbc02d; color: #2b2b2b; }
+.fighting { background: #e65100; }
+.water { background: linear-gradient(135deg, #00bcd4, #0288d1); }
+.ice { background: linear-gradient(135deg, #00e5ff, #0288d1); }
+
+/* BOTÃO */
+.card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 6px 14px;
+  min-width: 120px;
+  min-height: 32px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #fff;
+  background: #5e35b1;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.card a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>🌸 Registro de Negociação T1C</h1>
-<h2>PokeXGames • <strong>Shiny Meganium</strong></h2>
-
-<div style="text-align:center;">
-  <span class="badge">T1C • Grass Type</span>
+<div class="header">
+  <h1>📘 Planejamento PXG</h1>
+  <p>Registros históricos • Conquistas • Negociações</p>
 </div>
 
-<img src="assets/shiny-meganium.gif" alt="Shiny Meganium">
+<div class="grid">
 
-<table>
-  <tr>
-    <td>📅 Data</td>
-    <td>13/10/2024</td>
-  </tr>
+  <!-- SHINY DRAGONAIR -->
+  <div class="card">
+    <img src="assets/shiny-dragonair.gif" class="shiny-gif">
+    <h3>Shiny Dragonair</h3>
+    <span class="badge dragon">T1B • Dragon</span>
+    <a href="registro-shiny-dragonair.html">Abrir registro</a>
+  </div>
 
-  <tr>
-    <td>🌿 Pokémon</td>
-    <td>Shiny Meganium</td>
-  </tr>
+  <!-- SHINY LUXRAY -->
+  <div class="card">
+    <img src="assets/shiny-luxray.gif" class="shiny-gif">
+    <h3>Shiny Luxray</h3>
+    <span class="badge electric">T1C • Electric</span>
+    <a href="registro-shiny-luxray.html">Abrir registro</a>
+  </div>
 
-  <tr>
-    <td>🏷️ Categoria</td>
-    <td>T1C</td>
-  </tr>
+  <!-- SHINY MACHAMP -->
+  <div class="card">
+    <img src="assets/shiny-machamp.gif" class="shiny-gif">
+    <h3>Shiny Machamp</h3>
+    <span class="badge fighting">T1C • Fight</span>
+    <a href="registro-shiny-machamp.html">Abrir registro</a>
+  </div>
 
-  <tr>
-    <td>💰 Valor Pago</td>
-    <td>30–50 KK + Mega Glalie ❄️</td>
-  </tr>
+  <!-- SHINY TANGELA -->
+  <div class="card">
+    <img src="assets/shiny-tangela.gif" class="shiny-gif">
+    <h3>Shiny Tangela</h3>
+    <span class="badge grass">T1C • Grass</span>
+    <a href="registro-shiny-tangela.html">Abrir registro</a>
+  </div>
 
-  <tr>
-    <td>💲 Preço por KK</td>
-    <td>R$ 3,50</td>
-  </tr>
+  <!-- SHINY MEGANIUM -->
+  <div class="card">
+    <img src="assets/shiny-meganium.gif" class="shiny-gif">
+    <h3>Shiny Meganium</h3>
+    <span class="badge grass">T1C • Grass</span>
+    <a href="registro-shiny-meganium.html">Abrir registro</a>
+  </div>
 
-  <tr>
-    <td>💵 Valor Total</td>
-    <td>R$ 550 – 560</td>
-  </tr>
+  <!-- SHINY BLASTOISE -->
+  <div class="card">
+    <img src="assets/shiny-blastoise.gif" class="shiny-gif">
+    <h3>Shiny Blastoise</h3>
+    <span class="badge water">T1C • Water</span>
+    <a href="registro-shiny-blastoise.html">Abrir registro</a>
+  </div>
 
-  <tr>
-    <td>🔁 Origem</td>
-    <td>Negociação envolvendo Mega Glalie</td>
-  </tr>
-
-  <tr>
-    <td>📝 Observações</td>
-    <td>Registro histórico de conquista pessoal no PXG</td>
-  </tr>
-</table>
-
-<div class="footer">
-💜 Registro estratégico • Planejamento PXG 💜
-</div>
-
-<a href="index.html">⬅ Voltar ao menu</a>
+  <!-- SHINY FERALIGATR -->
+  <div class="card">
+    <img src="assets/shiny-feraligatr.gif" class="shiny-gif">
+    <h3>Shiny Feraligatr</h3>
+    <span class="badge water">T1C • Water</span>
+    <a href="registro-shiny-feraligatr.html">Abrir registro</a>
+  </div>
 
 </div>
 
