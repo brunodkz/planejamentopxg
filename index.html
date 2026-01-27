@@ -15,6 +15,27 @@ body {
   background-size: 300px;
 }
 
+/* BOTÃO VOLTAR */
+.back-btn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  background: linear-gradient(135deg,#424242,#000);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  transition: transform 0.2s, opacity 0.2s;
+  z-index: 999;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
 /* CONTAINER */
 .container {
   max-width: 1000px;
@@ -75,7 +96,7 @@ body {
   transform: scale(1.05);
 }
 
-/* INFO PANEL */
+/* INFO */
 .info {
   display: none;
   margin-top: 12px;
@@ -101,18 +122,21 @@ body {
   font-weight: bold;
 }
 
+/* TAB CONTENT */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
 @keyframes fade {
   from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-/* TAB CONTENT */
-.tab-content { display: none; }
-.tab-content.active { display: block; }
 </style>
 </head>
 
 <body>
+
+<!-- BOTÃO VOLTAR -->
+<a href="index.html" class="back-btn">⬅️ Voltar ao Menu</a>
 
 <div class="container">
 
@@ -121,53 +145,37 @@ body {
   <p>Conquistas • Registros • Crafts</p>
 </div>
 
-<!-- TABS -->
 <div class="tabs">
   <button class="tab-btn active" onclick="openTab('t1', this)">⭐ Shiny T1</button>
   <button class="tab-btn" onclick="openTab('t2', this)">🔥 Shiny T2</button>
 </div>
 
-<!-- T1 -->
 <div id="t1" class="tab-content active">
 <div class="grid">
 
 <div class="card" onclick="toggleInfo(this)">
 ❄️ Shiny Glaceon
 <div class="info">
-  Status: Ativo<br>
-  Valor estimado: 22kk<br>
-  Observação: Hunt solo eficiente
-  <br>
-  <a href="registro-shiny-glaceon.html">Abrir registro</a>
-</div>
-</div>
-
-<div class="card" onclick="toggleInfo(this)">
-🌿 Shiny Tangela
-<div class="info">
-  Status: Negociável<br>
-  Valor estimado: 15kk<br>
-  Observação: Boa liquidez
-  <br>
-  <a href="registro-shiny-tangela.html">Abrir registro</a>
+Status: Ativo<br>
+Valor estimado: 22kk<br>
+Observação: Hunt solo eficiente<br>
+<a href="registro-shiny-glaceon.html">Abrir registro</a>
 </div>
 </div>
 
 </div>
 </div>
 
-<!-- T2 -->
 <div id="t2" class="tab-content">
 <div class="grid">
 
 <div class="card" onclick="toggleInfo(this)">
 🐲 Shiny Druddigon
 <div class="info">
-  Status: Ativo<br>
-  Valor estimado: 35kk<br>
-  Observação: Tier alto
-  <br>
-  <a href="registro-shiny-druddigon.html">Abrir registro</a>
+Status: Ativo<br>
+Valor estimado: 35kk<br>
+Observação: Tier alto<br>
+<a href="registro-shiny-druddigon.html">Abrir registro</a>
 </div>
 </div>
 
@@ -185,8 +193,7 @@ function openTab(id, btn) {
 }
 
 function toggleInfo(card) {
-  const info = card.querySelector('.info');
-  info.classList.toggle('active');
+  card.querySelector('.info').classList.toggle('active');
 }
 </script>
 
