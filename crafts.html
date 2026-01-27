@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🛠️ Crafts • PXG</title>
+<title>🛠️ Crafts • PokeXGames</title>
 
 <style>
 /* =========================
-   BASE GLOBAL (SEGURA)
+   BASE GLOBAL (BLINDADA)
 ========================= */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -29,46 +33,156 @@ body {
   max-width: 900px;
   margin: 30px auto;
   background: rgba(255,255,255,0.95);
-  padding: 24px;
+  padding: 26px;
   border-radius: 18px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.25);
 }
 
 /* =========================
-   TÍTULOS
+   HEADER
 ========================= */
-h1 {
+.header {
   text-align: center;
-  margin-top: 0;
-}
-
-.subtitle {
-  text-align: center;
-  color: #555;
   margin-bottom: 30px;
 }
 
+.header h1 {
+  margin: 0;
+}
+
+.header p {
+  margin-top: 6px;
+  color: #555;
+}
+
 /* =========================
-   SEÇÕES DE CRAFT
+   SEÇÕES
 ========================= */
 .section {
-  margin-bottom: 28px;
+  margin-bottom: 34px;
 }
 
 .section h2 {
-  margin-bottom: 10px;
-  border-bottom: 2px solid #ddd;
+  margin-bottom: 12px;
   padding-bottom: 6px;
+  border-bottom: 2px solid #ddd;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.list {
+/* =========================
+   GRID DE ITENS
+========================= */
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
+  gap: 12px;
 }
 
+/* =========================
+   ITEM
+========================= */
 .item {
-  background: #f5f5f5;
-  padding: 10px 14px;
-  border-radius: 12px;
+  background: #f4f4f4;
+  padding: 12px 14px;
+  border-radius: 14px;
   font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   BOTÃO VOLTAR
+========================= */
+.back {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.back a {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 14px;
+  background: #1976d2;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.back a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>🛠️ Área de Crafts</h1>
+    <p>Frutas • Elixires • Itens • Recursos</p>
+  </div>
+
+  <!-- =========================
+       BERRIES
+  ========================= -->
+  <div class="section">
+    <h2>🍓 Berries</h2>
+    <div class="grid">
+      <div class="item">🍓 Cheri Berry (Electric)</div>
+      <div class="item">🫐 Chesto Berry (Water)</div>
+      <div class="item">🍋 Pecha Berry (Poison)</div>
+      <div class="item">🍏 Rawst Berry (Fire)</div>
+      <div class="item">🍇 Aspear Berry (Ice)</div>
+      <div class="item">🥝 Lum Berry (Status)</div>
+    </div>
+  </div>
+
+  <!-- =========================
+       ELIXIRES
+  ========================= -->
+  <div class="section">
+    <h2>🧪 Elixires</h2>
+    <div class="grid">
+      <div class="item">🧴 Elixir Azul (Mana)</div>
+      <div class="item">🧴 Elixir Vermelho (HP)</div>
+      <div class="item">🧴 Elixir Verde (Stamina)</div>
+    </div>
+  </div>
+
+  <!-- =========================
+       ITENS
+  ========================= -->
+  <div class="section">
+    <h2>🧰 Itens</h2>
+    <div class="grid">
+      <div class="item">💊 Revive</div>
+      <div class="item">💉 Max Revive</div>
+      <div class="item">📦 Upgrade Stone</div>
+    </div>
+  </div>
+
+  <!-- =========================
+       RECURSOS
+  ========================= -->
+  <div class="section">
+    <h2>⛏️ Recursos</h2>
+    <div class="grid">
+      <div class="item">🌿 Ervas</div>
+      <div class="item">💎 Cristais</div>
+      <div class="item">🪵 Madeira Refinada</div>
+    </div>
+  </div>
+
+  <div class="back">
+    <a href="index.html">⬅ Voltar ao Planejamento</a>
+  </div>
+
+</div>
+
+</body>
+</html>
