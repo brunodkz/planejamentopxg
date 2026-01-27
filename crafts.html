@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧪 Crafts – PokeXGames</title>
+<title>🧪 Crafts • Planejamento PXG</title>
 
 <style>
 /* =========================
@@ -28,23 +28,33 @@ body {
 .header {
   max-width: 900px;
   margin: 30px auto;
-  padding: 20px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 12px;
+  background: rgba(255,255,255,0.95);
+  padding: 22px;
+  border-radius: 18px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
 }
 
 .header h1 {
   margin: 0;
-  font-size: 28px;
 }
 
 .header p {
-  margin-top: 8px;
-  color: #555;
+  margin-top: 6px;
+  color: #444;
 }
 
 /* =========================
-   GRID DE CARDS
-====
+   GRID
+========================= */
+.grid {
+  max-width: 1000px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  padding: 12px;
+}
+
+/* =========================
+   CARD BAS
