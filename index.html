@@ -27,14 +27,10 @@ body {
   text-decoration: none;
   font-weight: bold;
   box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-  transition: transform 0.2s, opacity 0.2s;
   z-index: 999;
 }
 
-.back-btn:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
+.back-btn:hover { opacity: 0.9; }
 
 /* CONTAINER */
 .container {
@@ -73,11 +69,21 @@ body {
   background: linear-gradient(135deg,#7cb342,#fbc02d);
 }
 
+/* TAB CONTENT */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
 /* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
+}
+
+/* CARD LINK */
+.card-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* CARD */
@@ -87,56 +93,38 @@ body {
   border-radius: 16px;
   text-align: center;
   font-weight: bold;
-  cursor: pointer;
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   transition: transform 0.2s;
+  position: relative;
 }
 
-.card:hover {
-  transform: scale(1.05);
-}
+.card:hover { transform: scale(1.05); }
 
-/* INFO */
+/* INFO HOVER */
 .info {
-  display: none;
-  margin-top: 12px;
-  padding: 14px;
-  background: #fafafa;
-  border-radius: 14px;
-  box-shadow: inset 0 0 0 2px #ddd;
-  animation: fade 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.95);
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: opacity 0.2s;
 }
 
-.info.active {
-  display: block;
-}
-
-.info a {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 6px 14px;
-  border-radius: 14px;
-  background: #1976d2;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* TAB CONTENT */
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
+.card:hover .info {
+  opacity: 1;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BOTÃO VOLTAR -->
-<a href="index.html" class="back-btn">⬅️ Voltar ao Menu</a>
+<a href="menu.html" class="back-btn">⬅️ Voltar ao Menu</a>
 
 <div class="container">
 
@@ -148,36 +136,66 @@ body {
 <div class="tabs">
   <button class="tab-btn active" onclick="openTab('t1', this)">⭐ Shiny T1</button>
   <button class="tab-btn" onclick="openTab('t2', this)">🔥 Shiny T2</button>
+  <button class="tab-btn" onclick="openTab('crafts', this)">🛠️ Crafts</button>
 </div>
 
+<!-- T1 -->
 <div id="t1" class="tab-content active">
 <div class="grid">
 
-<div class="card" onclick="toggleInfo(this)">
-❄️ Shiny Glaceon
-<div class="info">
-Status: Ativo<br>
-Valor estimado: 22kk<br>
-Observação: Hunt solo eficiente<br>
-<a href="registro-shiny-glaceon.html">Abrir registro</a>
-</div>
-</div>
+<a href="registro-shiny-glaceon.html" class="card-link">
+  <div class="card">
+    ❄️ Shiny Glaceon
+    <div class="info">
+      Status: Ativo<br>
+      Valor estimado: 22kk<br>
+      Clique para abrir registro
+    </div>
+  </div>
+</a>
+
+<a href="registro-shiny-luxray.html" class="card-link">
+  <div class="card">
+    ⚡ Shiny Luxray
+    <div class="info">
+      Status: Vendido<br>
+      Último valor: 18kk
+    </div>
+  </div>
+</a>
 
 </div>
 </div>
 
+<!-- T2 -->
 <div id="t2" class="tab-content">
 <div class="grid">
 
-<div class="card" onclick="toggleInfo(this)">
-🐲 Shiny Druddigon
-<div class="info">
-Status: Ativo<br>
-Valor estimado: 35kk<br>
-Observação: Tier alto<br>
-<a href="registro-shiny-druddigon.html">Abrir registro</a>
+<a href="registro-shiny-druddigon.html" class="card-link">
+  <div class="card">
+    🐲 Shiny Druddigon
+    <div class="info">
+      Tier alto<br>
+      Valor estimado: 35kk
+    </div>
+  </div>
+</a>
+
 </div>
 </div>
+
+<!-- CRAFTS -->
+<div id="crafts" class="tab-content">
+<div class="grid">
+
+<a href="crafts.html" class="card-link">
+  <div class="card">
+    🛠️ Área de Crafts
+    <div class="info">
+      Builds • Custos • Planejamento
+    </div>
+  </div>
+</a>
 
 </div>
 </div>
@@ -190,10 +208,6 @@ function openTab(id, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-}
-
-function toggleInfo(card) {
-  card.querySelector('.info').classList.toggle('active');
 }
 </script>
 
