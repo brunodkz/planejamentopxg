@@ -6,12 +6,7 @@
 <title>🛠️ Crafts • PokeXGames</title>
 
 <style>
-/* =========================
-   BASE GLOBAL
-========================= */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -26,9 +21,6 @@ body {
   color: #222;
 }
 
-/* =========================
-   CONTAINER
-========================= */
 .container {
   max-width: 900px;
   margin: 30px auto;
@@ -38,22 +30,11 @@ body {
   box-shadow: 0 8px 30px rgba(0,0,0,0.25);
 }
 
-/* =========================
-   HEADER
-========================= */
 .header {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.header p {
-  margin-top: 6px;
-  color: #555;
-}
-
-/* =========================
-   SEÇÕES
-========================= */
 .section {
   margin-bottom: 34px;
 }
@@ -62,101 +43,49 @@ body {
   margin-bottom: 12px;
   padding-bottom: 6px;
   border-bottom: 2px solid #ddd;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
-/* =========================
-   GRID
-========================= */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
 }
 
-/* =========================
-   ITEM PADRÃO
-========================= */
-.item {
-  background: #f4f4f4;
-  padding: 12px 14px;
-  border-radius: 14px;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-/* =========================
-   BOTÃO BASE
-========================= */
+/* BOTÕES */
 .craft-btn {
   cursor: pointer;
-  border: none;
   color: #fff;
   font-weight: bold;
   padding: 12px 14px;
   border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 .craft-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
 
-/* =========================
-   TEMAS DE BERRY
-========================= */
-.psychic {
-  background: linear-gradient(135deg, #ab47bc, #6a1b9a);
-}
+/* TEMAS */
+.psychic { background: linear-gradient(135deg, #ab47bc, #6a1b9a); }
+.grass   { background: linear-gradient(135deg, #66bb6a, #2e7d32); }
+.rock    { background: linear-gradient(135deg, #8d6e63, #4e342e); }
+.fire    { background: linear-gradient(135deg, #ff7043, #d84315); }
 
-.grass {
-  background: linear-gradient(135deg, #66bb6a, #2e7d32);
-}
-
-.rock {
-  background: linear-gradient(135deg, #8d6e63, #4e342e);
-}
-
-.fire {
-  background: linear-gradient(135deg, #ff7043, #d84315);
-}
-
-/* =========================
-   FIX DETAILS / SUMMARY
-========================= */
-details {
-  width: 100%;
-}
-
+/* DETAILS */
 details summary {
-  display: block;
   list-style: none;
 }
-
 details summary::-webkit-details-marker {
   display: none;
 }
 
-/* =========================
-   DETALHES
-========================= */
 .details {
-  margin-top: 14px;
-  padding: 16px;
+  margin-top: 12px;
+  padding: 14px;
   background: #fafafa;
   border-radius: 14px;
   box-shadow: inset 0 0 0 2px #ddd;
-  animation: fadeIn 0.25s ease-in-out;
-}
-
-.details h3 {
-  margin-top: 0;
 }
 
 .details ul {
@@ -169,36 +98,12 @@ details summary::-webkit-details-marker {
   margin-bottom: 8px;
 }
 
-/* =========================
-   ANIMAÇÃO
-========================= */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =========================
-   BOTÃO VOLTAR
-========================= */
-.back {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.back a {
-  display: inline-block;
-  padding: 8px 18px;
+.item {
+  background: #f4f4f4;
+  padding: 12px;
   border-radius: 14px;
-  background: #1976d2;
-  color: #fff;
   font-weight: bold;
-  text-decoration: none;
+  text-align: center;
 }
 </style>
 </head>
@@ -207,87 +112,66 @@ details summary::-webkit-details-marker {
 
 <div class="container">
 
-  <div class="header">
-    <h1>🛠️ Área de Crafts</h1>
-    <p>Frutas • Elixires • Itens • Recursos</p>
+<div class="header">
+  <h1>🛠️ Área de Crafts</h1>
+  <p>Frutas • Elixires • Itens • Recursos</p>
+</div>
+
+<div class="section">
+<h2>🍓 Berries</h2>
+
+<div class="grid">
+
+<!-- PAYAPA -->
+<details>
+  <summary class="craft-btn psychic">🌰 Payapa Berry (Psychic)</summary>
+  <div class="details">
+    <ul>
+      <li>🌱 1x Major Seed Bag</li>
+      <li>🪶 6x Strange Wings</li>
+      <li>🌿 20x Condensed Grass</li>
+    </ul>
   </div>
+</details>
 
-  <!-- =========================
-       BERRIES
-  ========================= -->
-  <div class="section">
-    <h2>🍓 Berries</h2>
-
-    <div class="grid">
-
-      <!-- PAYAPA BERRY -->
-      <details>
-        <summary class="craft-btn psychic">🌰 Payapa Berry (Psychic)</summary>
-        <div class="details">
-          <h3>🧠 Itens Necessários</h3>
-          <ul>
-            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
-            <li>🪶 <strong>6x</strong> Strange Wings</li>
-            <li>🌿 <strong>20x</strong> Condensed Grass</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- OCCA BERRY -->
-      <details>
-        <summary class="craft-btn fire">🍊 Occa Berry (Fire)</summary>
-        <div class="details">
-          <h3>🔥 Itens Necessários</h3>
-          <ul>
-            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
-            <li>🪨 <strong>6x</strong> Strange Rocks</li>
-            <li>🌿 <strong>20x</strong> Condensed Grass</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- FUTURAS -->
-      <div class="item">🥬 Rindo Berry (Grass)</div>
-      <div class="item">🍐 Aspear Berry (Ice)</div>
-      <div class="item">🍆 Colbur Berry (Dark)</div>
-      <div class="item">🍏 Lum Berry (Status)</div>
-      <div class="item">🍋 Sitrus Berry (Status)</div>
-
-    </div>
+<!-- RINDO -->
+<details>
+  <summary class="craft-btn grass">🥬 Rindo Berry (Grass)</summary>
+  <div class="details">
+    <ul>
+      <li>🌱 1x Major Seed Bag</li>
+      <li>🥦 8x Greens</li>
+      <li>🌿 20x Condensed Grass</li>
+    </ul>
   </div>
+</details>
 
-  <!-- ELIXIRES -->
-  <div class="section">
-    <h2>🧪 Elixires</h2>
-    <div class="grid">
-      <div class="item">🧴 Defense Elixir (DEF)</div>
-      <div class="item">🧴 Swordman Elixir (ATK)</div>
-      <div class="item">🧴 Healing Elixir (HP)</div>
-    </div>
+<!-- CHARTI -->
+<details>
+  <summary class="craft-btn rock">🍋 Charti Berry (Rock)</summary>
+  <div class="details">
+    <ul>
+      <li>🌱 1x Major Seed Bag</li>
+      <li>🪨 6x Strange Rocks</li>
+      <li>🌿 20x Condensed Grass</li>
+    </ul>
   </div>
+</details>
 
-  <!-- ITENS -->
-  <div class="section">
-    <h2>🧰 Itens</h2>
-    <div class="grid">
-      <div class="item">💊 Nightmare Revive</div>
-      <div class="item">🛡️ Nightmare Shield Elixir</div>
-      <div class="item">💉 Nightmare Potion</div>
-    </div>
+<!-- OCCA -->
+<details>
+  <summary class="craft-btn fire">🍊 Occa Berry (Fire)</summary>
+  <div class="details">
+    <ul>
+      <li>🌱 1x Major Seed Bag</li>
+      <li>🪨 6x Strange Rocks</li>
+      <li>🌿 20x Condensed Grass</li>
+    </ul>
   </div>
+</details>
 
-  <!-- RECURSOS -->
-  <div class="section">
-    <h2>⛏️ Recursos</h2>
-    <div class="grid">
-      <div class="item">🌱 Major Seed Bag</div>
-      <div class="item">🌿 Condensed Grass</div>
-    </div>
-  </div>
-
-  <div class="back">
-    <a href="index.html">⬅ Voltar ao Planejamento</a>
-  </div>
+</div>
+</div>
 
 </div>
 
