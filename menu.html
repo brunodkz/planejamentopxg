@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>📘 PXG • Menu Principal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: url("./assets/pokeballs-bg-v2.png") repeat;
+      background-size: 300px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      text-align: center;
+      animation: fadeIn 0.6s ease;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    p {
+      margin-top: 0;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .menu-btn {
+      display: block;
+      padding: 16px;
+      margin: 14px 0;
+      border-radius: 18px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #1b1b1b;
+      background: linear-gradient(135deg, #7cb342, #fbc02d);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.3);
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #777;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>📘 Planejamento PXG</h1>
+    <p>Organização • Conquistas • Negociações • Crafts</p>
+
+    <a href="conquistas-negociacoes.html" class="menu-btn">
+      🏆 Conquistas & Negociações
+    </a>
+
+    <a href="crafts.html" class="menu-btn">
+      🛠️ Crafts
+    </a>
+
+    <div class="footer">
+      SI VIS PACEM, PARA BELLUM
+    </div>
+  </div>
+
+</body>
+</html>
