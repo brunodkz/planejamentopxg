@@ -7,7 +7,7 @@
 
 <style>
 /* =========================
-   BASE GLOBAL (ESTÁVEL)
+   BASE GLOBAL
 ========================= */
 html, body {
   margin: 0;
@@ -27,4 +27,219 @@ body {
 .header {
   max-width: 900px;
   margin: 30px auto;
-  background: rgba
+  background: rgba(255,255,255,0.96);
+  padding: 22px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.header p {
+  margin-top: 6px;
+  color: #444;
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+  max-width: 1000px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  padding: 14px;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   SLOT PADRÃO DAS GIFs
+========================= */
+.gif-box {
+  height: 96px;               /* PADRÃO VISUAL */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* GIFS */
+.gif-box img {
+  max-height: 90px;           /* ESCALA UNIFICADA */
+  width: auto;
+  image-rendering: pixelated;
+}
+
+/* =========================
+   TÍTULO
+========================= */
+.card h3 {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+.card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 6px 14px;
+  min-width: 130px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   CORES POR POKÉMON
+========================= */
+.dragonair a {
+  background: linear-gradient(135deg, #e53935, #b71c1c);
+}
+
+.glaceon a {
+  background: linear-gradient(135deg, #00e5ff, #0288d1);
+}
+
+.luxray a {
+  background: linear-gradient(135deg, #fbc02d, #f9a825);
+  color: #222;
+}
+
+.machamp a {
+  background: linear-gradient(135deg, #ef6c00, #e65100);
+}
+
+.tangela a {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+}
+
+.meganium a {
+  background: linear-gradient(135deg, #9575cd, #5e35b1);
+}
+
+.blastoise a {
+  background: linear-gradient(135deg, #00bcd4, #01579b);
+}
+
+.feraligatr a {
+  background: linear-gradient(135deg, #1e88e5, #0d47a1);
+}
+
+.druddigon a {
+  background: linear-gradient(135deg, #c62828, #6a1b9a);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>📘 Planejamento PXG</h1>
+  <p>Registros históricos • Conquistas • Negociações</p>
+</div>
+
+<div class="grid">
+
+  <div class="card dragonair">
+    <div class="gif-box">
+      <img src="./assets/shiny-dragonair.gif">
+    </div>
+    <h3>🐉 Shiny Dragonair</h3>
+    <a href="registro-shiny-dragonair.html">Abrir registro</a>
+  </div>
+
+  <div class="card glaceon">
+    <div class="gif-box">
+      <img src="./assets/shiny-glaceon.gif">
+    </div>
+    <h3>❄️ Shiny Glaceon</h3>
+    <a href="registro-shiny-glaceon.html">Abrir registro</a>
+  </div>
+
+  <div class="card luxray">
+    <div class="gif-box">
+      <img src="./assets/shiny-luxray.gif">
+    </div>
+    <h3>⚡ Shiny Luxray</h3>
+    <a href="registro-shiny-luxray.html">Abrir registro</a>
+  </div>
+
+  <div class="card machamp">
+    <div class="gif-box">
+      <img src="./assets/shiny-machamp.gif">
+    </div>
+    <h3>👊 Shiny Machamp</h3>
+    <a href="registro-shiny-machamp.html">Abrir registro</a>
+  </div>
+
+  <div class="card tangela">
+    <div class="gif-box">
+      <img src="./assets/shiny-tangela.gif">
+    </div>
+    <h3>🌿 Shiny Tangela</h3>
+    <a href="registro-shiny-tangela.html">Abrir registro</a>
+  </div>
+
+  <div class="card meganium">
+    <div class="gif-box">
+      <img src="./assets/shiny-meganium.gif">
+    </div>
+    <h3>🌸 Shiny Meganium</h3>
+    <a href="registro-shiny-meganium.html">Abrir registro</a>
+  </div>
+
+  <div class="card blastoise">
+    <div class="gif-box">
+      <img src="./assets/shiny-blastoise.gif">
+    </div>
+    <h3>🐢 Shiny Blastoise</h3>
+    <a href="registro-shiny-blastoise.html">Abrir registro</a>
+  </div>
+
+  <div class="card feraligatr">
+    <div class="gif-box">
+      <img src="./assets/shiny-feraligatr.gif">
+    </div>
+    <h3>🐊 Shiny Feraligatr</h3>
+    <a href="registro-shiny-feraligatr.html">Abrir registro</a>
+  </div>
+
+  <div class="card druddigon">
+    <div class="gif-box">
+      <img src="./assets/shiny-druddigon.gif">
+    </div>
+    <h3>🐲 Shiny Druddigon</h3>
+    <a href="registro-shiny-druddigon.html">Abrir registro</a>
+  </div>
+
+</div>
+
+</body>
+</html>
