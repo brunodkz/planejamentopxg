@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📘 Planejamento PXG</title>
+<title>📘 Planejamento PokeXGames</title>
 
 <style>
 /* =========================
@@ -43,12 +43,12 @@ body {
    GRID
 ========================= */
 .grid {
-  max-width: 1000px;
+  max-width: 1050px;
   margin: 30px auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 22px;
-  padding: 14px;
+  padding: 16px;
 }
 
 /* =========================
@@ -60,7 +60,7 @@ body {
   padding: 18px;
   text-align: center;
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  transition: transform 0.25s ease;
+  transition: transform 0.25s;
 }
 
 .card:hover {
@@ -68,30 +68,50 @@ body {
 }
 
 /* =========================
-   SLOT PADRÃO DAS GIFs
+   GIF PADRONIZADO
 ========================= */
 .gif-box {
-  height: 96px;               /* PADRÃO VISUAL */
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
-/* GIFS */
 .gif-box img {
-  max-height: 90px;           /* ESCALA UNIFICADA */
+  max-height: 92px;
   width: auto;
   image-rendering: pixelated;
 }
 
 /* =========================
-   TÍTULO
+   TITULOS
 ========================= */
 .card h3 {
-  margin: 6px 0;
+  margin: 4px 0;
   font-size: 1rem;
 }
+
+/* =========================
+   BADGE TIER / TYPE
+========================= */
+.badge {
+  display: inline-block;
+  margin: 4px 0 10px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 14px;
+  color: #fff;
+}
+
+/* TIPOS */
+.type-dragon   { background: linear-gradient(135deg, #2e7d32, #ef6c00); }
+.type-grass    { background: linear-gradient(135deg, #2e7d32, #1b5e20); }
+.type-electric { background: linear-gradient(135deg, #fbc02d, #f9a825); color:#222; }
+.type-ice      { background: linear-gradient(135deg, #00e5ff, #0288d1); }
+.type-water    { background: linear-gradient(135deg, #1e88e5, #0d47a1); }
+.type-fight    { background: linear-gradient(135deg, #ef6c00, #e65100); }
 
 /* =========================
    BOTÃO
@@ -100,60 +120,20 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 8px;
-  padding: 6px 14px;
-  min-width: 130px;
+  padding: 6px 16px;
+  min-width: 140px;
   border-radius: 14px;
   font-weight: bold;
   font-size: 0.85rem;
   text-decoration: none;
   color: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #333;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card a:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.35);
-}
-
-/* =========================
-   CORES POR POKÉMON
-========================= */
-.dragonair a {
-  background: linear-gradient(135deg, #e53935, #b71c1c);
-}
-
-.glaceon a {
-  background: linear-gradient(135deg, #00e5ff, #0288d1);
-}
-
-.luxray a {
-  background: linear-gradient(135deg, #fbc02d, #f9a825);
-  color: #222;
-}
-
-.machamp a {
-  background: linear-gradient(135deg, #ef6c00, #e65100);
-}
-
-.tangela a {
-  background: linear-gradient(135deg, #2e7d32, #1b5e20);
-}
-
-.meganium a {
-  background: linear-gradient(135deg, #9575cd, #5e35b1);
-}
-
-.blastoise a {
-  background: linear-gradient(135deg, #00bcd4, #01579b);
-}
-
-.feraligatr a {
-  background: linear-gradient(135deg, #1e88e5, #0d47a1);
-}
-
-.druddigon a {
-  background: linear-gradient(135deg, #c62828, #6a1b9a);
 }
 </style>
 </head>
@@ -167,76 +147,60 @@ body {
 
 <div class="grid">
 
-  <div class="card dragonair">
-    <div class="gif-box">
-      <img src="./assets/shiny-dragonair.gif">
-    </div>
+  <div class="card">
+    <div class="gif-box"><img src="./assets/shiny-dragonair.gif"></div>
     <h3>🐉 Shiny Dragonair</h3>
+    <span class="badge type-dragon">T1B • Dragon Type</span>
     <a href="registro-shiny-dragonair.html">Abrir registro</a>
   </div>
 
-  <div class="card glaceon">
-    <div class="gif-box">
-      <img src="./assets/shiny-glaceon.gif">
-    </div>
-    <h3>❄️ Shiny Glaceon</h3>
-    <a href="registro-shiny-glaceon.html">Abrir registro</a>
-  </div>
-
-  <div class="card luxray">
-    <div class="gif-box">
-      <img src="./assets/shiny-luxray.gif">
-    </div>
+  <div class="card">
+    <div class="gif-box"><img src="./assets/shiny-luxray.gif"></div>
     <h3>⚡ Shiny Luxray</h3>
+    <span class="badge type-electric">T1C • Electric Type</span>
     <a href="registro-shiny-luxray.html">Abrir registro</a>
   </div>
 
-  <div class="card machamp">
-    <div class="gif-box">
-      <img src="./assets/shiny-machamp.gif">
-    </div>
-    <h3>👊 Shiny Machamp</h3>
-    <a href="registro-shiny-machamp.html">Abrir registro</a>
-  </div>
-
-  <div class="card tangela">
-    <div class="gif-box">
-      <img src="./assets/shiny-tangela.gif">
-    </div>
-    <h3>🌿 Shiny Tangela</h3>
-    <a href="registro-shiny-tangela.html">Abrir registro</a>
-  </div>
-
-  <div class="card meganium">
-    <div class="gif-box">
-      <img src="./assets/shiny-meganium.gif">
-    </div>
-    <h3>🌸 Shiny Meganium</h3>
+  <div class="card">
+    <div class="gif-box"><img src="./assets/shiny-meganium.gif"></div>
+    <h3>🌿 Shiny Meganium</h3>
+    <span class="badge type-grass">T1C • Grass Type</span>
     <a href="registro-shiny-meganium.html">Abrir registro</a>
   </div>
 
-  <div class="card blastoise">
-    <div class="gif-box">
-      <img src="./assets/shiny-blastoise.gif">
-    </div>
-    <h3>🐢 Shiny Blastoise</h3>
-    <a href="registro-shiny-blastoise.html">Abrir registro</a>
+  <div class="card">
+    <div class="gif-box"><img src="./assets/shiny-glaceon.gif"></div>
+    <h3>❄️ Shiny Glaceon</h3>
+    <span class="badge type-ice">T1B • Ice Type</span>
+    <a href="registro-shiny-glaceon.html">Abrir registro</a>
   </div>
 
-  <div class="card feraligatr">
-    <div class="gif-box">
-      <img src="./assets/shiny-feraligatr.gif">
-    </div>
+  <div class="card">
+    <div class="gif-box"><img src="./assets/shiny-feraligatr.gif"></div>
     <h3>🐊 Shiny Feraligatr</h3>
+    <span class="badge type-water">T1C • Water Type</span>
     <a href="registro-shiny-feraligatr.html">Abrir registro</a>
   </div>
 
-  <div class="card druddigon">
-    <div class="gif-box">
-      <img src="./assets/shiny-druddigon.gif">
-    </div>
+  <div class="card">
+    <div class="gif-box"><img src="./assets/shiny-machamp.gif"></div>
+    <h3>👊 Shiny Machamp</h3>
+    <span class="badge type-fight">T1C • Fight Type</span>
+    <a href="registro-shiny-machamp.html">Abrir registro</a>
+  </div>
+
+  <div class="card">
+    <div class="gif-box"><img src="./assets/shiny-druddigon.gif"></div>
     <h3>🐲 Shiny Druddigon</h3>
+    <span class="badge type-dragon">T2 • Dragon Type</span>
     <a href="registro-shiny-druddigon.html">Abrir registro</a>
+  </div>
+
+  <div class="card">
+    <div class="gif-box"><img src="./assets/shiny-blastoise.gif"></div>
+    <h3>🐢 Shiny Blastoise</h3>
+    <span class="badge type-water">T1C • Water Type</span>
+    <a href="registro-shiny-blastoise.html">Abrir registro</a>
   </div>
 
 </div>
