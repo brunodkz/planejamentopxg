@@ -7,8 +7,12 @@
 
 <style>
 /* =========================
-   BASE GLOBAL (ESTÁVEL)
+   BASE GLOBAL (BLINDADA)
 ========================= */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -31,4 +35,208 @@ body {
   padding: 22px;
   border-radius: 18px;
   text-align: center;
-  box-shadow:
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.header p {
+  margin: 6px 0 0;
+  color: #444;
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+  max-width: 1000px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  padding: 12px;
+}
+
+/* =========================
+   CARD BASE
+========================= */
+.card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  transition: transform 0.25s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   GIF / ICON BOX
+========================= */
+.gif-box img {
+  width: 88px;
+  height: auto;
+  image-rendering: pixelated;
+  margin-bottom: 10px;
+}
+
+.gif-box {
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+.card h3 {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+/* =========================
+   BADGE (TIER / CATEGORIA)
+========================= */
+.badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+.card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 6px 14px;
+  min-width: 130px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   CORES POR POKÉMON
+========================= */
+.dragonair a { background:#e53935; }
+.luxray a { background:#fbc02d; color:#222; }
+.meganium a { background:linear-gradient(135deg,#66bb6a,#2e7d32); }
+.glaceon a { background:linear-gradient(135deg,#4fc3f7,#0288d1); }
+.feraligatr a { background:linear-gradient(135deg,#1e88e5,#0d47a1); }
+.machamp a { background:#ef6c00; }
+.druddigon a { background:#8e24aa; }
+.blastoise a { background:linear-gradient(135deg,#26c6da,#0277bd); }
+.crafts a { background:linear-gradient(135deg,#7cb342,#fbc02d); color:#222; }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>📘 Planejamento PXG</h1>
+  <p>Registros • Conquistas • Crafts</p>
+</div>
+
+<div class="grid">
+
+  <div class="card dragonair">
+    <div class="gif-box">
+      <img src="./assets/shiny-dragonair.gif">
+    </div>
+    <h3>🐉 Shiny Dragonair</h3>
+    <span class="badge" style="background:#e53935;">T1B • Dragon Type</span>
+    <a href="registro-shiny-dragonair.html">Abrir registro</a>
+  </div>
+
+  <div class="card luxray">
+    <div class="gif-box">
+      <img src="./assets/shiny-luxray.gif">
+    </div>
+    <h3>⚡ Shiny Luxray</h3>
+    <span class="badge" style="background:#fbc02d;color:#222;">T1C • Electric</span>
+    <a href="registro-shiny-luxray.html">Abrir registro</a>
+  </div>
+
+  <div class="card meganium">
+    <div class="gif-box">
+      <img src="./assets/shiny-meganium.gif">
+    </div>
+    <h3>🌿 Shiny Meganium</h3>
+    <span class="badge" style="background:#2e7d32;">T1C • Grass</span>
+    <a href="registro-shiny-meganium.html">Abrir registro</a>
+  </div>
+
+  <div class="card glaceon">
+    <div class="gif-box">
+      <img src="./assets/shiny-glaceon.gif">
+    </div>
+    <h3>❄️ Shiny Glaceon</h3>
+    <span class="badge" style="background:#0288d1;">T1B • Ice</span>
+    <a href="registro-shiny-glaceon.html">Abrir registro</a>
+  </div>
+
+  <div class="card feraligatr">
+    <div class="gif-box">
+      <img src="./assets/shiny-feraligatr.gif">
+    </div>
+    <h3>🐊 Shiny Feraligatr</h3>
+    <span class="badge" style="background:#0d47a1;">T1C • Water</span>
+    <a href="registro-shiny-feraligatr.html">Abrir registro</a>
+  </div>
+
+  <div class="card machamp">
+    <div class="gif-box">
+      <img src="./assets/shiny-machamp.gif">
+    </div>
+    <h3>👊 Shiny Machamp</h3>
+    <span class="badge" style="background:#ef6c00;">T1C • Fight</span>
+    <a href="registro-shiny-machamp.html">Abrir registro</a>
+  </div>
+
+  <div class="card druddigon">
+    <div class="gif-box">
+      <img src="./assets/shiny-druddigon.gif">
+    </div>
+    <h3>🐲 Shiny Druddigon</h3>
+    <span class="badge" style="background:#6a1b9a;">T2 • Dragon</span>
+    <a href="registro-shiny-druddigon.html">Abrir registro</a>
+  </div>
+
+  <div class="card blastoise">
+    <div class="gif-box">
+      <img src="./assets/shiny-blastoise.gif">
+    </div>
+    <h3>🐢 Shiny Blastoise</h3>
+    <span class="badge" style="background:#0277bd;">T1C • Water</span>
+    <a href="registro-shiny-blastoise.html">Abrir registro</a>
+  </div>
+
+  <!-- CRAFTS -->
+  <div class="card crafts">
+    <div class="gif-box">🛠️</div>
+    <h3>Crafts</h3>
+    <span class="badge" style="background:linear-gradient(135deg,#7cb342,#fbc02d);color:#222;">
+      Frutas • Itens • Recursos
+    </span>
+    <a href="crafts.html">Abrir área</a>
+  </div>
+
+</div>
+
+</body>
+</html>
