@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📘 Planejamento PXG</title>
+<title>🏆 PXG • Conquistas</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -15,7 +15,7 @@ body {
   background-size: 300px;
 }
 
-/* BOTÃO VOLTAR */
+/* VOLTAR */
 .back-btn {
   position: fixed;
   top: 18px;
@@ -30,13 +30,11 @@ body {
   z-index: 999;
 }
 
-.back-btn:hover { opacity: 0.9; }
-
 /* CONTAINER */
 .container {
   max-width: 1000px;
-  margin: 30px auto;
-  background: rgba(255,255,255,0.95);
+  margin: 60px auto;
+  background: rgba(255,255,255,0.96);
   padding: 26px;
   border-radius: 18px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.25);
@@ -54,6 +52,7 @@ body {
   gap: 10px;
   justify-content: center;
   margin-bottom: 26px;
+  flex-wrap: wrap;
 }
 
 .tab-btn {
@@ -69,21 +68,11 @@ body {
   background: linear-gradient(135deg,#7cb342,#fbc02d);
 }
 
-/* TAB CONTENT */
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
 /* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
-}
-
-/* CARD LINK */
-.card-link {
-  text-decoration: none;
-  color: inherit;
 }
 
 /* CARD */
@@ -93,75 +82,98 @@ body {
   border-radius: 16px;
   text-align: center;
   font-weight: bold;
+  cursor: pointer;
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   transition: transform 0.2s;
-  position: relative;
+  text-decoration: none;
+  color: #222;
 }
 
-.card:hover { transform: scale(1.05); }
-
-/* INFO HOVER */
-.info {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  background: rgba(255,255,255,0.95);
-  padding: 10px;
-  border-radius: 12px;
-  font-size: 13px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  transition: opacity 0.2s;
+.card:hover {
+  transform: scale(1.05);
 }
 
-.card:hover .info {
-  opacity: 1;
+/* STATUS */
+.status {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #555;
 }
+
+/* TAB CONTENT */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 </style>
 </head>
 
 <body>
 
-<a href="menu.html" class="back-btn">⬅️ Voltar ao Menu</a>
+<a href="menu.html" class="back-btn">⬅️ Menu</a>
 
 <div class="container">
 
 <div class="header">
-  <h1>📘 Planejamento PXG</h1>
-  <p>Conquistas • Registros • Crafts</p>
+  <h1>🏆 Conquistas PXG</h1>
+  <p>Shinys • Registros • Histórico</p>
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="openTab('t1', this)">⭐ Shiny T1</button>
-  <button class="tab-btn" onclick="openTab('t2', this)">🔥 Shiny T2</button>
-  <button class="tab-btn" onclick="openTab('crafts', this)">🛠️ Crafts</button>
+  <button class="tab-btn active" onclick="openTab('t1b', this)">⭐ T1B</button>
+  <button class="tab-btn" onclick="openTab('t1c', this)">⭐ T1C</button>
+  <button class="tab-btn" onclick="openTab('t2', this)">🔥 T2</button>
 </div>
 
-<!-- T1 -->
-<div id="t1" class="tab-content active">
+<!-- T1B -->
+<div id="t1b" class="tab-content active">
 <div class="grid">
 
-<a href="registro-shiny-glaceon.html" class="card-link">
-  <div class="card">
-    ❄️ Shiny Glaceon
-    <div class="info">
-      Status: Ativo<br>
-      Valor estimado: 22kk<br>
-      Clique para abrir registro
-    </div>
-  </div>
+<a href="registro-shiny-dragonair.html" class="card">
+🐉 Shiny Dragonair
+<span class="status">Status: Ativo</span>
 </a>
 
-<a href="registro-shiny-luxray.html" class="card-link">
-  <div class="card">
-    ⚡ Shiny Luxray
-    <div class="info">
-      Status: Vendido<br>
-      Último valor: 18kk
-    </div>
-  </div>
+<a href="registro-shiny-feraligatr.html" class="card">
+🐊 Shiny Feraligatr
+<span class="status">Status: Reservado</span>
+</a>
+
+<a href="registro-shiny-blastoise.html" class="card">
+💧 Shiny Blastoise
+<span class="status">Status: Reservado</span>
+</a>
+
+<a href="registro-shiny-machamp.html" class="card">
+💪 Shiny Machamp
+<span class="status">Status: Reservado</span>
+</a>
+
+<a href="registro-shiny-glaceon.html" class="card">
+❄️ Shiny Glaceon
+<span class="status">Status: Reservado</span>
+</a>
+
+</div>
+</div>
+
+<!-- T1C -->
+<div id="t1c" class="tab-content">
+<div class="grid">
+
+<a href="registro-shiny-luxray.html" class="card">
+⚡ Shiny Luxray
+<span class="status">Status: Vendido</span>
+</a>
+
+<a href="registro-shiny-tangela.html" class="card">
+🌱 Shiny Tangela
+<span class="status">Status: Vendido</span>
+</a>
+
+<a href="registro-shiny-meganium.html" class="card">
+🌿 Shiny Meganium
+<span class="status">Status: Vendido</span>
 </a>
 
 </div>
@@ -171,30 +183,9 @@ body {
 <div id="t2" class="tab-content">
 <div class="grid">
 
-<a href="registro-shiny-druddigon.html" class="card-link">
-  <div class="card">
-    🐲 Shiny Druddigon
-    <div class="info">
-      Tier alto<br>
-      Valor estimado: 35kk
-    </div>
-  </div>
-</a>
-
-</div>
-</div>
-
-<!-- CRAFTS -->
-<div id="crafts" class="tab-content">
-<div class="grid">
-
-<a href="crafts.html" class="card-link">
-  <div class="card">
-    🛠️ Área de Crafts
-    <div class="info">
-      Builds • Custos • Planejamento
-    </div>
-  </div>
+<a href="registro-shiny-druddigon.html" class="card">
+🐲 Shiny Druddigon
+<span class="status">Status: Ativo</span>
 </a>
 
 </div>
