@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📅 Histórico de Hunts • PXG</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url("../assets/pokeballs-bg-v2.png") repeat;
+  background-size: 300px;
+}
+
+/* VOLTAR */
+.back-btn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  background: linear-gradient(135deg,#c62828,#8e0000);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: 70px auto 40px;
+  background: rgba(255,255,255,0.96);
+  padding: 26px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* LISTA DE HUNTS */
+.hunt-list {
+  display: grid;
+  gap: 18px;
+}
+
+.hunt-card {
+  background: #f7f7f7;
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  text-decoration: none;
+  color: #222;
+  transition: transform 0.2s;
+}
+
+.hunt-card:hover {
+  transform: scale(1.03);
+}
+
+.hunt-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.hunt-meta {
+  margin-top: 8px;
+  font-size: 0.95em;
+  color: #444;
+}
+</style>
+</head>
+
+<body>
+
+<a href="../planejamentos-gerais.html" class="back-btn">⬅️ Planejamentos</a>
+
+<div class="container">
+
+  <div class="header">
+    <h1>📅 Histórico de Hunts</h1>
+    <p>Registro organizado por data • eficiência • evolução</p>
+  </div>
+
+  <div class="hunt-list">
+
+    <!-- HUNT 1 -->
+    <a class="hunt-card" href="hunt-sandaconda-2026-01-27.html">
+      <div class="hunt-title">🐍 Sandaconda</div>
+      <div class="hunt-meta">
+        📆 Data: 27/01/2026<br>
+        👥 Players: Abs Snoow & Abs Nobru<br>
+        ⏱️ Tempo: 2h • 💰 Loot: 7.6 KK
+      </div>
+    </a>
+
+    <!-- FUTURAS HUNTS (modelo)
+    <a class="hunt-card" href="hunt-nomepokemon-YYYY-MM-DD.html">
+      <div class="hunt-title">🐲 Garchomp</div>
+      <div class="hunt-meta">
+        📆 Data: 10/02/2026<br>
+        👥 Players: ...<br>
+        ⏱️ Tempo: ... • 💰 Loot: ...
+      </div>
+    </a>
+    -->
+
+  </div>
+
+</div>
+</body>
+</html>
