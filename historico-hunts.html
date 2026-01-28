@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 Histórico de Hunts • PXG</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url("../assets/pokeballs-bg-v2.png") repeat;
+  background-size: 300px;
+}
+
+/* VOLTAR */
+.back-btn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  background: linear-gradient(135deg,#c62828,#8e0000);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: 70px auto 40px;
+  background: rgba(255,255,255,0.96);
+  padding: 26px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* CARD */
+.card {
+  background: #f7f7f7;
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card small {
+  display: block;
+  margin-top: 6px;
+  font-weight: normal;
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<a href="../planejamentos-gerais.html" class="back-btn">⬅️ Planejamentos</a>
+
+<div class="container">
+
+<div class="header">
+  <h1>📊 Histórico de Hunts</h1>
+  <p>Organizado por data e respawn</p>
+</div>
+
+<div class="grid">
+
+<a href="hunt-sandaconda-2026-01-25.html" class="card">
+🐍 Sandaconda
+<small>📅 25/01/2026 • 2h • 7.6KK</small>
+</a>
+
+<a href="hunt-sandaconda-2026-01-27.html" class="card">
+🐍 Sandaconda
+<small>📅 27/01/2026 • 2h • 8.1KK</small>
+</a>
+
+<!-- novos hunts entram aqui -->
+
+</div>
+
+</div>
+</body>
+</html>
