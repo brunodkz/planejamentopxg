@@ -243,10 +243,10 @@ body {
 <table class="table">
 <tr><td>🔥 Volcanic Essence</td><td>1</td></tr>
 <tr><td>🕊️ Wingeon Essence</td><td>1</td></tr>
-  <tr><td>⚡ Raibolt Essence</td><td>2</td></tr>
+<tr><td>⚡ Raibolt Essence</td><td>2</td></tr>
 <tr><td>🔮 Malefic Essence</td><td>1</td></tr>
 </table>
-<p class="desc">⚔️ Beber poção aumentará o ataque do seu Pokémon em 70% por 8 segundos. Cooldown: 3 minutos e 30 segundos.</p>
+<p class="desc">⚔️ Aumenta o ataque do Pokémon em 70% por 8s. Cooldown: 3m30s.</p>
 </div>
 </div>
 
@@ -258,10 +258,26 @@ body {
 <div id="healing" class="content">
 <table class="table">
 <tr><td>🕊️ Wingeon Essence</td><td>1</td></tr>
-  <tr><td>👊 Gardestrike Essence</td><td>1</td></tr>
-  <tr><td>🌌 Psycraft Essence</td><td>1</td></tr>
+<tr><td>👊 Gardestrike Essence</td><td>1</td></tr>
+<tr><td>🌌 Psycraft Essence</td><td>1</td></tr>
 </table>
-<p class="desc">💜 Beber esta poção recuperará instantaneamente 66% da vida do seu Pokémon. Cooldown: 3 minutos e 30 segundos.</p>
+<p class="desc">💜 Recupera instantaneamente 66% da vida. Cooldown: 3m30s.</p>
+</div>
+</div>
+
+<div class="craft elixir" data-id="bounty">
+<button class="toggle-btn electric" onclick="toggle('bounty')">
+💰 Bounty Elixir
+<span class="fav" onclick="toggleFav(event,'bounty')">☆</span>
+</button>
+<div id="bounty" class="content">
+<table class="table">
+<tr><td>🌊 Seavell Essence</td><td>1</td></tr>
+<tr><td>🔮 Malefic Essence</td><td>1</td></tr>
+<tr><td>🕊️ Wingeon Essence</td><td>1</td></tr>
+<tr><td>⚡ Raibolt Essence</td><td>1</td></tr>
+</table>
+<p class="desc">💰 Concede bônus de sorte de 20% por 15 minutos. Cooldown: 1 hora.</p>
 </div>
 </div>
 
@@ -278,11 +294,9 @@ function toggle(id) {
 
 function toggleFav(event, id) {
   event.stopPropagation();
-  if (favorites.includes(id)) {
-    favorites = favorites.filter(f => f !== id);
-  } else {
-    favorites.push(id);
-  }
+  favorites.includes(id)
+    ? favorites = favorites.filter(f => f !== id)
+    : favorites.push(id);
   localStorage.setItem(favKey, JSON.stringify(favorites));
   updateFavIcons();
 }
@@ -292,13 +306,8 @@ function updateFavIcons() {
     const id = craft.dataset.id;
     const star = craft.querySelector(".fav");
     if (!star) return;
-    if (favorites.includes(id)) {
-      star.textContent = "★";
-      star.classList.add("active");
-    } else {
-      star.textContent = "☆";
-      star.classList.remove("active");
-    }
+    star.textContent = favorites.includes(id) ? "★" : "☆";
+    star.classList.toggle("active", favorites.includes(id));
   });
 }
 
