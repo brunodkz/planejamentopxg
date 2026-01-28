@@ -42,7 +42,24 @@ body {
 
 .header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+/* FILTRO */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* BOTÕES */
@@ -65,14 +82,11 @@ body {
 
 /* CORES */
 .fire { background:#e53935; color:#fff; }
-.rock { background:#8d6e63; color:#fff; }
-.dark { background:#424242; color:#fff; }
 .grass { background:#43a047; color:#fff; }
-
-/* NOVAS CORES */
-.yellow { background:#fbc02d; color:#000; }
-.green { background:#66bb6a; color:#fff; }
-.purple { background:#7e57c2; color:#fff; }
+.rock { background:#8d6e63; color:#fff; }
+.electric { background:#fbc02d; }
+.psychic { background:#ab47bc; color:#fff; }
+.dark { background:#424242; color:#fff; }
 
 /* CONTEÚDO */
 .content {
@@ -87,29 +101,25 @@ body {
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
 }
 
 .table th, .table td {
   border-bottom: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
-}
-
-.table th {
-  background:#eee;
 }
 
 /* DESCRIÇÃO */
 .desc {
   margin-top: 10px;
   padding: 10px 14px;
-  background: #fff3e0;
-  border-left: 5px solid #ff7043;
+  background: #fff;
+  border-left: 5px solid #ccc;
   border-radius: 10px;
   font-size: 0.95em;
-  line-height: 1.5;
 }
+
+/* GRUPOS */
+.craft { display: block; }
 </style>
 </head>
 
@@ -124,99 +134,91 @@ body {
   <p>Berries • Revives • Elixirs</p>
 </div>
 
-<!-- 🔥 BERRIES -->
+<!-- FILTROS -->
+<div class="filters">
+  <button onclick="filterCrafts('all')">📦 Todos</button>
+  <button onclick="filterCrafts('berry')">🍓 Berries</button>
+  <button onclick="filterCrafts('revive')">☠️ Revives</button>
+  <button onclick="filterCrafts('elixir')">🧪 Elixirs</button>
+</div>
 
+<!-- 🍓 BERRIES -->
+
+<div class="craft berry">
 <button class="toggle-btn fire" onclick="toggle('occa')">🔥 Occa Berry</button>
 <div id="occa" class="content">
 <table class="table">
-<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
 <tr><td>🔥 Hot Fur</td><td>8</td></tr>
 <tr><td>🌿 Condensed Grass</td><td>20</td></tr>
 </table>
-<p class="desc">🔥 <b>Efeito:</b> Diminui o dano recebido por golpes do tipo Fogo por uma hora.</p>
+<p class="desc">🔥 Reduz dano do tipo Fogo por 1 hora.</p>
+</div>
 </div>
 
+<div class="craft berry">
 <button class="toggle-btn grass" onclick="toggle('rindo')">🌿 Rindo Berry</button>
 <div id="rindo" class="content">
 <table class="table">
-<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
 <tr><td>🍃 Greens</td><td>8</td></tr>
 <tr><td>🌱 Condensed Seed</td><td>20</td></tr>
 </table>
-<p class="desc">🌿 <b>Efeito:</b> Diminui o dano recebido por golpes do tipo Planta por uma hora.</p>
+<p class="desc">🌿 Reduz dano do tipo Planta por 1 hora.</p>
+</div>
 </div>
 
-<button class="toggle-btn rock" onclick="toggle('charti')">🥌 Charti Berry</button>
-<div id="charti" class="content">
-<table class="table">
-<tr><th>Item</th><th>Qtd</th></tr>
-<tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
-<tr><td>🥌 Strange Rock</td><td>6</td></tr>
-<tr><td>🌿 Condensed Grass</td><td>20</td></tr>
-</table>
-<p class="desc">🥌 <b>Efeito:</b> Diminui o dano recebido por golpes do tipo Pedra por uma hora.</p>
-</div>
-
-<button class="toggle-btn green" onclick="toggle('lum')">✨ Lum Berry</button>
-<div id="lum" class="content">
-<table class="table">
-<tr><th>Item</th><th>Qtd</th></tr>
-<tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
-<tr><td>💊 Medicine</td><td>100</td></tr>
-<tr><td>🌱 Condensed Seed</td><td>20</td></tr>
-</table>
-<p class="desc">✨ <b>Efeito:</b> Concede imunidade a qualquer efeito negativo por uma hora.</p>
-</div>
-
-<button class="toggle-btn yellow" onclick="toggle('sitrus')">🍊 Sitrus Berry</button>
+<div class="craft berry">
+<button class="toggle-btn electric" onclick="toggle('sitrus')">🍋 Sitrus Berry</button>
 <div id="sitrus" class="content">
 <table class="table">
-<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
 <tr><td>🍄 Mushroom</td><td>8</td></tr>
 <tr><td>🌱 Condensed Seed</td><td>20</td></tr>
 </table>
-<p class="desc">🍊 <b>Efeito:</b> Quando o portador sofre dano fatal, recupera 50% da vida total (ativado apenas uma vez).</p>
+<p class="desc">🍋 Recupera 50% da vida ao sofrer dano fatal (1 vez).</p>
+</div>
 </div>
 
 <!-- ☠️ REVIVE -->
 
+<div class="craft revive">
 <button class="toggle-btn dark" onclick="toggle('nightmare')">☠️ Nightmare Revive</button>
 <div id="nightmare" class="content">
 <table class="table">
-<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🧬 Revive</td><td>1</td></tr>
 <tr><td>🌿 Petite Leaves</td><td>1</td></tr>
 <tr><td>🧲 Corrupted Magnet</td><td>1</td></tr>
 <tr><td>💀 Darkrai Essence</td><td>24</td></tr>
 </table>
-<p class="desc">☠️ <b>Efeito:</b> Um medicamento que revive seu Pokémon no Nightmare World.</p>
+<p class="desc">☠️ Revive Pokémon no Nightmare World.</p>
+</div>
 </div>
 
 <!-- 🧪 ELIXIRS -->
 
+<div class="craft elixir">
 <button class="toggle-btn fire" onclick="toggle('swordsman')">⚔️ Swordsman Elixir</button>
 <div id="swordsman" class="content">
 <table class="table">
-<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🧴 Elixir</td><td>1</td></tr>
 <tr><td>⚔️ Steel Shard</td><td>6</td></tr>
 <tr><td>🔥 Battle Essence</td><td>4</td></tr>
 </table>
-<p class="desc">⚔️ <b>Efeito:</b> COLE AQUI A DESCRIÇÃO OFICIAL DA WIKI PXG</p>
+<p class="desc">⚔️ Elixir focado em aumento ofensivo.</p>
+</div>
 </div>
 
-<button class="toggle-btn purple" onclick="toggle('healing')">💚 Healing Elixir</button>
+<div class="craft elixir">
+<button class="toggle-btn psychic" onclick="toggle('healing')">💜 Healing Elixir</button>
 <div id="healing" class="content">
 <table class="table">
-<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🧴 Elixir</td><td>1</td></tr>
 <tr><td>🌿 Medicinal Leaf</td><td>10</td></tr>
 <tr><td>💧 Pure Water</td><td>5</td></tr>
 </table>
-<p class="desc">💚 <b>Efeito:</b> COLE AQUI A DESCRIÇÃO OFICIAL DA WIKI PXG</p>
+<p class="desc">💜 Elixir voltado para recuperação.</p>
+</div>
 </div>
 
 </div>
@@ -225,6 +227,12 @@ body {
 function toggle(id) {
   const el = document.getElementById(id);
   el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+function filterCrafts(type) {
+  document.querySelectorAll('.craft').forEach(c => {
+    c.style.display = (type === 'all' || c.classList.contains(type)) ? 'block' : 'none';
+  });
 }
 </script>
 
