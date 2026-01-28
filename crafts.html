@@ -3,38 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🛠️ Crafts • PXG</title>
+<title>🛠️ Crafts • PokeXGames</title>
 
 <style>
 * { box-sizing: border-box; }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  min-height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   background: url("./assets/pokeballs-bg-v2.png") repeat;
   background-size: 300px;
+  color: #222;
 }
 
-/* VOLTAR */
-.back-btn {
-  position: fixed;
-  top: 18px;
-  left: 18px;
-  background: linear-gradient(135deg,#c62828,#8e0000);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* CONTAINER */
 .container {
-  max-width: 950px;
-  margin: 70px auto 40px;
-  background: rgba(255,255,255,0.96);
-  padding: 30px;
-  border-radius: 20px;
+  max-width: 900px;
+  margin: 30px auto;
+  background: rgba(255,255,255,0.95);
+  padding: 26px;
+  border-radius: 18px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.25);
 }
 
@@ -43,82 +32,319 @@ body {
   margin-bottom: 30px;
 }
 
+/* SEÇÕES */
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #ddd;
+}
+
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
 }
 
-/* CARD */
-.card {
-  padding: 22px;
-  border-radius: 18px;
-  text-align: center;
+/* BOTÕES */
+.craft-btn {
+  cursor: pointer;
+  color: #fff;
   font-weight: bold;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  transition: transform 0.2s;
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.craft-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
 
-/* TEMAS */
-.rock { background: linear-gradient(135deg,#6d4c41,#a1887f); color:#fff; }
-.water { background: linear-gradient(135deg,#42a5f5,#1565c0); color:#fff; }
-.grass { background: linear-gradient(135deg,#66bb6a,#2e7d32); color:#fff; }
-.fire { background: linear-gradient(135deg,#ff7043,#d84315); color:#fff; }
-.magic { background: linear-gradient(135deg,#ba68c8,#6a1b9a); color:#fff; }
+/* TEMAS POR ELEMENTO */
+.fire    { background: linear-gradient(135deg,#ff7043,#d84315); }
+.grass   { background: linear-gradient(135deg,#66bb6a,#2e7d32); }
+.rock    { background: linear-gradient(135deg,#8d6e63,#4e342e); }
+.psychic { background: linear-gradient(135deg,#ab47bc,#6a1b9a); }
+.status  { background: linear-gradient(135deg,#757575,#424242); }
+.special { background: linear-gradient(135deg,#42a5f5,#1565c0); }
 
-.card small {
-  display: block;
-  margin-top: 8px;
-  font-weight: normal;
+/* DETAILS */
+details summary {
+  list-style: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+.details {
+  margin-top: 12px;
+  padding: 14px;
+  background: #fafafa;
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 2px #ddd;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.details li {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* ITEM SIMPLES */
+.item {
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* BOTÃO VOLTAR */
+.back {
+  text-align: center;
+  margin-top: 30px;
+}
+.back a {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 14px;
+  background: linear-gradient(135deg,#c62828,#8e0000);
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.back a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
 </style>
 </head>
 
 <body>
 
-<a href="menu.html" class="back-btn">⬅️ Menu</a>
-
 <div class="container">
 
-<div class="header">
-  <h1>🛠️ Área de Crafts</h1>
-  <p>Berries • Elixires • Produção</p>
+  <div class="header">
+    <h1>🛠️ Área de Crafts</h1>
+    <p>Frutas • Itens • Recursos</p>
+  </div>
+
+  <!-- =========================
+       BERRIES
+  ========================= -->
+  <div class="section">
+    <h2>🍓 Berries</h2>
+
+    <div class="grid">
+
+      <!-- Occa Berry -->
+      <details>
+        <summary class="craft-btn fire">🍊 Occa Berry (Fire)</summary>
+        <div class="details">
+          <ul>
+            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
+            <li>🔥 <strong>8x</strong> Hot Fur</li>
+            <li>🌿 <strong>20x</strong> Condensed Grass</li>
+          </ul>
+          <em>Reduz dano recebido de ataques de fogo</em> :contentReference[oaicite:1]{index=1}
+        </div>
+      </details>
+
+      <!-- Rindo Berry -->
+      <details>
+        <summary class="craft-btn grass">🥬 Rindo Berry (Grass)</summary>
+        <div class="details">
+          <ul>
+            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
+            <li>🥦 <strong>8x</strong> Greens</li>
+            <li>🌿 <strong>20x</strong> Condensed Grass</li>
+          </ul>
+          <em>Reduz dano recebido de ataques de grama</em> :contentReference[oaicite:2]{index=2}
+        </div>
+      </details>
+
+      <!-- Charti Berry -->
+      <details>
+        <summary class="craft-btn rock">🍋 Charti Berry (Rock)</summary>
+        <div class="details">
+          <ul>
+            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
+            <li>🪨 <strong>6x</strong> Strange Rocks</li>
+            <li>🌿 <strong>20x</strong> Condensed Grass</li>
+          </ul>
+          <em>Reduz dano recebido de ataques de pedra</em> :contentReference[oaicite:3]{index=3}
+        </div>
+      </details>
+
+      <!-- Payapa Berry -->
+      <details>
+        <summary class="craft-btn psychic">🌰 Payapa Berry (Psychic)</summary>
+        <div class="details">
+          <ul>
+            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
+            <li>🪶 <strong>6x</strong> Strange Wings</li>
+            <li>🌿 <strong>20x</strong> Condensed Grass</li>
+          </ul>
+          <em>Reduz dano recebido de ataques psíquicos</em> :contentReference[oaicite:4]{index=4}
+        </div>
+      </details>
+
+      <!-- Colbur Berry -->
+      <details>
+        <summary class="craft-btn special">🍆 Colbur Berry (Dark)</summary>
+        <div class="details">
+          <ul>
+            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
+            <li>🪨 <strong>6x</strong> Strange Rocks</li>
+            <li>🌿 <strong>20x</strong> Condensed Grass</li>
+          </ul>
+          <em>Reduz dano recebido de ataques noturnos</em> :contentReference[oaicite:5]{index=5}
+        </div>
+      </details>
+
+      <!-- Shuca Berry -->
+      <details>
+        <summary class="craft-btn rock">🟫 Shuca Berry (Ground)</summary>
+        <div class="details">
+          <ul>
+            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
+            <li>🪨 <strong>8x</strong> Dirt Chunks</li>
+            <li>🌿 <strong>20x</strong> Condensed Grass</li>
+          </ul>
+          <em>Reduz dano recebido de ataques de terra</em> :contentReference[oaicite:6]{index=6}
+        </div>
+      </details>
+
+      <!-- Lum Berry -->
+      <details>
+        <summary class="craft-btn status">🍏 Lum Berry (Status)</summary>
+        <div class="details">
+          <ul>
+            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
+            <li>🍏 <strong>1x</strong> Sitrus Berry</li>
+            <li>🌿 <strong>15x</strong> Condensed Grass</li>
+          </ul>
+          <em>Remove todos os status negativos</em> :contentReference[oaicite:7]{index=7}
+        </div>
+      </details>
+
+      <!-- Sitrus Berry -->
+      <details>
+        <summary class="craft-btn special">🍋 Sitrus Berry (Heal)</summary>
+        <div class="details">
+          <ul>
+            <li>🌱 <strong>1x</strong> Major Seed Bag</li>
+            <li>🍇 <strong>1x</strong> Berry Mash</li>
+            <li>🌿 <strong>15x</strong> Condensed Grass</li>
+          </ul>
+          <em>Restaura HP quando derrotado</em> :contentReference[oaicite:8]{index=8}
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       ELIXIRES & ITENS
+  ========================= -->
+  <div class="section">
+    <h2>🧪 Elixires & Itens</h2>
+
+    <div class="grid">
+
+      <!-- Nightmare Revive -->
+      <details>
+        <summary class="craft-btn special">💀 Nightmare Revive</summary>
+        <div class="details">
+          <ul>
+            <li>⚡ <strong>24x</strong> Darkrai Essences</li>
+            <li>🧲 <strong>1x</strong> Corrupted Magnet</li>
+            <li>🍃 <strong>1x</strong> Petite Leaves</li>
+          </ul>
+          <em>Revive item obtido por profissão Professor</em> :contentReference[oaicite:9]{index=9}
+        </div>
+      </details>
+
+      <!-- Nightmare Shield Elixir -->
+      <details>
+        <summary class="craft-btn special">🛡️ Nightmare Shield Elixir</summary>
+        <div class="details">
+          <ul>
+            <li>⚡ <strong>72x</strong> Darkrai Essences</li>
+            <li>🐦 <strong>2x</strong> Small Bird Beak</li>
+            <li>❄️ <strong>1x</strong> Ice Crystal</li>
+          </ul>
+          <em>Elixir produzido por profissão Professor</em> :contentReference[oaicite:10]{index=10}
+        </div>
+      </details>
+
+      <!-- Swordsman Elixir -->
+      <details>
+        <summary class="craft-btn special">⚔️ Swordsman Elixir</summary>
+        <div class="details">
+          <ul>
+            <li>🗡️ <strong>10x</strong> Metal Shards</li>
+            <li>🌿 <strong>15x</strong> Condensed Grass</li>
+            <li>💧 <strong>5x</strong> Aqua Drops</li>
+          </ul>
+          <em>Elixir de ataque</em>
+        </div>
+      </details>
+
+      <!-- Healing Elixir -->
+      <details>
+        <summary class="craft-btn special">❤️ Healing Elixir</summary>
+        <div class="details">
+          <ul>
+            <li>🍃 <strong>20x</strong> Herb Blend</li>
+            <li>💧 <strong>10x</strong> Fresh Water</li>
+          </ul>
+          <em>Elixir de cura</em>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       RECURSOS
+  ========================= -->
+  <div class="section">
+    <h2>⛏️ Recursos</h2>
+    <div class="grid">
+      <div class="item">🌱 Major Seed Bag</div>
+      <div class="item">🌿 Condensed Grass</div>
+      <div class="item">🪨 Strange Rocks</div>
+      <div class="item">🔥 Hot Fur</div>
+    </div>
+  </div>
+
+  <div class="back">
+    <a href="index.html">⬅️ Voltar ao Menu</a>
+  </div>
+
 </div>
 
-<div class="grid">
-
-  <div class="card rock">
-    🪨 Rock Berry
-    <small>Produção sólida</small>
-  </div>
-
-  <div class="card water">
-    💧 Water Berry
-    <small>Foco em sustain</small>
-  </div>
-
-  <div class="card grass">
-    🌿 Grass Berry
-    <small>Recuperação contínua</small>
-  </div>
-
-  <div class="card fire">
-    🔥 Fire Berry
-    <small>Dano & agressividade</small>
-  </div>
-
-  <div class="card magic">
-    🧪 Elixires
-    <small>Buffs temporários</small>
-  </div>
-
-</div>
-
-</div>
 </body>
 </html>
