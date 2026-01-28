@@ -2,205 +2,219 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<title>Conquistas e Negociações</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🏆 PXG • Conquistas & Negociações</title>
 
 <style>
-* { box-sizing: border-box; }
-
 body {
-  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: url("./assets/pokeballs-bg-v2.png") repeat;
-  background-size: 300px;
+  background: linear-gradient(135deg, #020617, #020617);
+  color: #e5e7eb;
+  margin: 0;
+  padding: 20px;
 }
 
-/* BOTÃO VOLTAR */
-.back-btn {
-  position: fixed;
-  top: 18px;
-  left: 18px;
-  background: linear-gradient(135deg,#424242,#000);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-  z-index: 999;
-}
-
-/* CONTAINER */
-.container {
-  max-width: 1000px;
-  margin: 60px auto;
-  background: rgba(255,255,255,0.96);
-  padding: 26px;
-  border-radius: 18px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-}
-
-/* HEADER */
-.header {
+h1 {
   text-align: center;
-  margin-bottom: 26px;
+  margin-bottom: 10px;
 }
 
-/* TABS */
+.shiny-counter {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
 .tabs {
   display: flex;
-  gap: 10px;
   justify-content: center;
-  margin-bottom: 26px;
+  gap: 10px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
 .tab-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
   border: none;
-  padding: 10px 18px;
-  border-radius: 14px;
-  font-weight: bold;
   cursor: pointer;
-  background: #e0e0e0;
+  font-weight: bold;
+  background: #1e293b;
+  color: #e5e7eb;
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg,#7cb342,#fbc02d);
+  background: #22c55e;
+  color: #020617;
 }
 
-/* GRID */
-.grid {
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
 }
 
-/* CARD */
-.card {
-  background: #f7f7f7;
-  padding: 16px;
-  border-radius: 16px;
+.pokemon-card {
+  background: #020617;
+  border-radius: 14px;
+  padding: 12px;
   text-align: center;
-  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  transition: transform 0.2s;
-  text-decoration: none;
-  color: #222;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,.4);
 }
 
-.card:hover {
-  transform: scale(1.05);
+.pokemon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.6);
 }
 
-/* STATUS */
+.pokemon-card img {
+  width: 90px;
+  height: auto;
+}
+
 .status {
-  display: block;
   margin-top: 6px;
-  font-size: 0.9em;
-  font-weight: normal;
-  color: #555;
+  font-size: 13px;
+  font-weight: bold;
 }
 
-/* TAB CONTENT */
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+.ativo { color: #22c55e; }
+.reservado { color: #facc15; }
+.vendido { color: #ef4444; }
+
+.voltar {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.voltar a {
+  padding: 12px 20px;
+  background: #38bdf8;
+  color: #020617;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+}
 </style>
 </head>
 
 <body>
 
-<a href="menu.html" class="back-btn">⬅️ Menu</a>
+<h1>🏆 Conquistas e Negociações</h1>
 
-<div class="container">
-
-<div class="header">
-  <h1>🏆 Conquistas & Negociações</h1>
-  <p>Shinys • Registros • Histórico</p>
+<div class="shiny-counter">
+✨ Total: <span id="total-shinys">0</span> |
+🟢 Ativos: <span id="ativos">0</span> |
+🟡 Reservados: <span id="reservados">0</span> |
+🔴 Vendidos: <span id="vendidos">0</span>
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="openTab('t1b', this)">⭐ T1B</button>
-  <button class="tab-btn" onclick="openTab('t1c', this)">⭐ T1C</button>
-  <button class="tab-btn" onclick="openTab('t2', this)">🔥 T2</button>
+  <button class="tab-btn active" onclick="abrirAba('t1b', this)">T1B</button>
+  <button class="tab-btn" onclick="abrirAba('t1c', this)">T1C</button>
+  <button class="tab-btn" onclick="abrirAba('t2', this)">T2</button>
 </div>
 
-<!-- ================= T1B ================= -->
+<!-- T1B -->
 <div id="t1b" class="tab-content active">
-<div class="grid">
+  <div class="pokemon-card" data-status="vendido" onclick="location.href='registro-shiny-luxray.html'">
+    <img src="assets/luxray.png">
+    <h3>✨ Shiny Luxray</h3>
+    <div class="status vendido">Vendido</div>
+  </div>
 
-<a href="registro-shiny-dragonair.html" class="card">
-🐉 Shiny Dragonair
-<span class="status">Status: Ativo</span>
-</a>
+  <div class="pokemon-card" data-status="vendido" onclick="location.href='registro-shiny-tangela.html'">
+    <img src="assets/tangela.png">
+    <h3>✨ Shiny Tangela</h3>
+    <div class="status vendido">Vendido</div>
+  </div>
 
-<a href="registro-shiny-feraligatr.html" class="card">
-🐊 Shiny Feraligatr
-<span class="status">Status: Reservado</span>
-</a>
-
-<a href="registro-shiny-blastoise.html" class="card">
-💧 Shiny Blastoise
-<span class="status">Status: Reservado</span>
-</a>
-
-<a href="registro-shiny-machamp.html" class="card">
-💪 Shiny Machamp
-<span class="status">Status: Reservado</span>
-</a>
-
-<a href="registro-shiny-glaceon.html" class="card">
-❄️ Shiny Glaceon
-<span class="status">Status: Reservado</span>
-</a>
-
-</div>
+  <div class="pokemon-card" data-status="ativo" onclick="location.href='registro-shiny-dragonair.html'">
+    <img src="assets/dragonair.png">
+    <h3>✨ Shiny Dragonair</h3>
+    <div class="status ativo">Ativo</div>
+  </div>
 </div>
 
-<!-- ================= T1C ================= -->
+<!-- T1C -->
 <div id="t1c" class="tab-content">
-<div class="grid">
+  <div class="pokemon-card" data-status="reservado" onclick="location.href='registro-shiny-feraligatr.html'">
+    <img src="assets/feraligatr.png">
+    <h3>✨ Shiny Feraligatr</h3>
+    <div class="status reservado">Reservado</div>
+  </div>
 
-<a href="registro-shiny-luxray.html" class="card">
-⚡ Shiny Luxray
-<span class="status">Status: Vendido</span>
-</a>
+  <div class="pokemon-card" data-status="reservado" onclick="location.href='registro-shiny-blastoise.html'">
+    <img src="assets/blastoise.png">
+    <h3>✨ Shiny Blastoise</h3>
+    <div class="status reservado">Reservado</div>
+  </div>
 
-<a href="registro-shiny-tangela.html" class="card">
-🌱 Shiny Tangela
-<span class="status">Status: Vendido</span>
-</a>
-
-<a href="registro-shiny-meganium.html" class="card">
-🌿 Shiny Meganium
-<span class="status">Status: Vendido</span>
-</a>
-
+  <div class="pokemon-card" data-status="vendido" onclick="location.href='registro-shiny-meganium.html'">
+    <img src="assets/meganium.png">
+    <h3>✨ Shiny Meganium</h3>
+    <div class="status vendido">Vendido</div>
+  </div>
 </div>
-</div>
 
-<!-- ================= T2 ================= -->
+<!-- T2 -->
 <div id="t2" class="tab-content">
-<div class="grid">
+  <div class="pokemon-card" data-status="reservado" onclick="location.href='registro-shiny-machamp.html'">
+    <img src="assets/machamp.png">
+    <h3>✨ Shiny Machamp</h3>
+    <div class="status reservado">Reservado</div>
+  </div>
 
-<a href="registro-shiny-druddigon.html" class="card">
-🐲 Shiny Druddigon
-<span class="status">Status: Ativo</span>
-</a>
+  <div class="pokemon-card" data-status="reservado" onclick="location.href='registro-shiny-glaceon.html'">
+    <img src="assets/glaceon.png">
+    <h3>✨ Shiny Glaceon</h3>
+    <div class="status reservado">Reservado</div>
+  </div>
 
+  <div class="pokemon-card" data-status="ativo" onclick="location.href='registro-shiny-druddigon.html'">
+    <img src="assets/druddigon.png">
+    <h3>✨ Shiny Druddigon</h3>
+    <div class="status ativo">Ativo</div>
+  </div>
 </div>
-</div>
 
+<div class="voltar">
+  <a href="menu.html">⬅️ Voltar ao Menu</a>
 </div>
 
 <script>
-function openTab(id, btn) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+function abrirAba(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(a => a.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const pokemons = document.querySelectorAll(".pokemon-card");
+  let ativos = 0, reservados = 0, vendidos = 0;
+
+  pokemons.forEach(p => {
+    const status = p.dataset.status;
+    if (status === "ativo") ativos++;
+    if (status === "reservado") reservados++;
+    if (status === "vendido") vendidos++;
+  });
+
+  document.getElementById("total-shinys").textContent = pokemons.length;
+  document.getElementById("ativos").textContent = ativos;
+  document.getElementById("reservados").textContent = reservados;
+  document.getElementById("vendidos").textContent = vendidos;
+});
 </script>
 
 </body>
