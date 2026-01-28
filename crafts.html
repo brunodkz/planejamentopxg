@@ -64,13 +64,15 @@ body {
 }
 
 /* CORES */
-.fire { background:#ff7043; color:#fff; }
+.fire { background:#e53935; color:#fff; }
 .rock { background:#8d6e63; color:#fff; }
-.flying { background:#64b5f6; color:#fff; }
 .dark { background:#424242; color:#fff; }
-.normal { background:#cfd8dc; }
-.grass { background:#66bb6a; color:#fff; }
-.psychic { background:#ba68c8; color:#fff; }
+.grass { background:#43a047; color:#fff; }
+
+/* NOVAS CORES */
+.yellow { background:#fbc02d; color:#000; }
+.green { background:#66bb6a; color:#fff; }
+.purple { background:#7e57c2; color:#fff; }
 
 /* CONTEÚDO */
 .content {
@@ -157,7 +159,7 @@ body {
 <p class="desc">🥌 <b>Efeito:</b> Diminui o dano recebido por golpes do tipo Pedra por uma hora.</p>
 </div>
 
-<button class="toggle-btn electric" onclick="toggle('lum')">✨ Lum Berry</button>
+<button class="toggle-btn green" onclick="toggle('lum')">✨ Lum Berry</button>
 <div id="lum" class="content">
 <table class="table">
 <tr><th>Item</th><th>Qtd</th></tr>
@@ -168,16 +170,17 @@ body {
 <p class="desc">✨ <b>Efeito:</b> Concede imunidade a qualquer efeito negativo por uma hora.</p>
 </div>
 
-  <button class="toggle-btn electric" onclick="toggle('sitrus')">✨ Sitrus Berry</button>
-<div id="lum" class="content">
+<button class="toggle-btn yellow" onclick="toggle('sitrus')">🍊 Sitrus Berry</button>
+<div id="sitrus" class="content">
 <table class="table">
 <tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
 <tr><td>🍄 Mushroom</td><td>8</td></tr>
 <tr><td>🌱 Condensed Seed</td><td>20</td></tr>
 </table>
-<p class="desc">✨ <b>Efeito:</b>  Quando o portador sofre dano fatal, ele recupera 50% de sua vida total (este efeito é ativado apenas uma vez).</p>
+<p class="desc">🍊 <b>Efeito:</b> Quando o portador sofre dano fatal, recupera 50% da vida total (ativado apenas uma vez).</p>
 </div>
+
 <!-- ☠️ REVIVE -->
 
 <button class="toggle-btn dark" onclick="toggle('nightmare')">☠️ Nightmare Revive</button>
@@ -205,7 +208,7 @@ body {
 <p class="desc">⚔️ <b>Efeito:</b> COLE AQUI A DESCRIÇÃO OFICIAL DA WIKI PXG</p>
 </div>
 
-<button class="toggle-btn grass" onclick="toggle('healing')">💚 Healing Elixir</button>
+<button class="toggle-btn purple" onclick="toggle('healing')">💚 Healing Elixir</button>
 <div id="healing" class="content">
 <table class="table">
 <tr><th>Item</th><th>Qtd</th></tr>
