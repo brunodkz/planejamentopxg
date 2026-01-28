@@ -63,7 +63,7 @@ body {
   transform: scale(1.02);
 }
 
-/* CORES TEMÁTICAS */
+/* CORES */
 .fire { background:#ff7043; color:#fff; }
 .rock { background:#8d6e63; color:#fff; }
 .flying { background:#64b5f6; color:#fff; }
@@ -97,6 +97,17 @@ body {
 .table th {
   background:#eee;
 }
+
+/* DESCRIÇÃO */
+.desc {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #fff3e0;
+  border-left: 5px solid #ff7043;
+  border-radius: 10px;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
 </style>
 </head>
 
@@ -113,137 +124,96 @@ body {
 
 <!-- 🔥 BERRIES -->
 
-<button class="toggle-btn fire" onclick="toggle('occa')">🔥 Occa Berry (Fire)</button>
+<button class="toggle-btn fire" onclick="toggle('occa')">🔥 Occa Berry</button>
 <div id="occa" class="content">
 <table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
+<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
 <tr><td>🔥 Hot Fur</td><td>8</td></tr>
 <tr><td>🌿 Condensed Grass</td><td>20</td></tr>
 </table>
+<p class="desc">🔥 <b>Efeito:</b> Diminui o dano recebido por golpes do tipo Fogo por uma hora.</p>
 </div>
 
-<button class="toggle-btn grass" onclick="toggle('rindo')">🌿 Rindo Berry (Grass)</button>
+<button class="toggle-btn grass" onclick="toggle('rindo')">🌿 Rindo Berry</button>
 <div id="rindo" class="content">
 <table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
+<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
 <tr><td>🍃 Greens</td><td>8</td></tr>
 <tr><td>🌱 Condensed Seed</td><td>20</td></tr>
 </table>
+<p class="desc">🌿 <b>Efeito:</b> Diminui o dano recebido por golpes do tipo Planta por uma hora.</p>
 </div>
 
-<button class="toggle-btn rock" onclick="toggle('charti')">🥌 Charti Berry (Rock)</button>
+<button class="toggle-btn rock" onclick="toggle('charti')">🥌 Charti Berry</button>
 <div id="charti" class="content">
 <table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
+<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
-<tr><td>🥌Strange Rock</td><td>6</td></tr>
+<tr><td>🥌 Strange Rock</td><td>6</td></tr>
 <tr><td>🌿 Condensed Grass</td><td>20</td></tr>
 </table>
+<p class="desc">🥌 <b>Efeito:</b> Diminui o dano recebido por golpes do tipo Pedra por uma hora.</p>
 </div>
 
 <button class="toggle-btn normal" onclick="toggle('lum')">✨ Lum Berry</button>
 <div id="lum" class="content">
 <table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
+<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
 <tr><td>💊 Medicine</td><td>100</td></tr>
 <tr><td>🌱 Condensed Seed</td><td>20</td></tr>
 </table>
+<p class="desc">✨ <b>Efeito:</b> Concede imunidade a qualquer efeito negativo por uma hora.</p>
 </div>
 
-<button class="toggle-btn normal" onclick="toggle('sitrus')">🍊 Sitrus Berry</button>
-<div id="sitrus" class="content">
+  <button class="toggle-btn normal" onclick="toggle('sitrus')">✨ Sitrus Berry</button>
+<div id="lum" class="content">
 <table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
+<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
-<tr><td>🍄  Mushroom</td><td>8</td></tr>
-<tr><td>🌿 Condensed Grass</td><td>20</td></tr>
-</table>
-</div>
-
-<button class="toggle-btn psychic" onclick="toggle('payapa')">🧠 Payapa Berry (Psychic)</button>
-<div id="payapa" class="content">
-<table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
-<tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
-<tr><td>🕊️ Strange Wings</td><td>6</td></tr>
+<tr><td>🍄 Mushroom</td><td>8</td></tr>
 <tr><td>🌱 Condensed Seed</td><td>20</td></tr>
 </table>
+<p class="desc">✨ <b>Efeito:</b>  Quando o portador sofre dano fatal, ele recupera 50% de sua vida total (este efeito é ativado apenas uma vez).</p>
 </div>
-
-<button class="toggle-btn dark" onclick="toggle('colbur')">🌑 Colbur Berry (Dark)</button>
-<div id="colbur" class="content">
-<table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
-<tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
-<tr><td>🐺 Hyena Tail</td><td>7</td></tr>
-<tr><td>🌿 Condensed Grass</td><td>20</td></tr>
-</table>
-</div>
-
-<button class="toggle-btn rock" onclick="toggle('shuca')">🪨 Shuca Berry (Ground)</button>
-<div id="shuca" class="content">
-<table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
-<tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
-<tr><td>🦔 Armadillo Claw</td><td>7</td></tr>
-<tr><td>🌱 Condensed Seed</td><td>20</td></tr>
-</table>
-</div>
-
-<!-- 🧪 ELIXIRS -->
+<!-- ☠️ REVIVE -->
 
 <button class="toggle-btn dark" onclick="toggle('nightmare')">☠️ Nightmare Revive</button>
 <div id="nightmare" class="content">
 <table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
+<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🧬 Revive</td><td>1</td></tr>
-<tr><td>🌿 Petite Leaves</td><td>5</td></tr>
-<tr><td>🧲 Corrupted Magnet</td><td>5</td></tr>
+<tr><td>🌿 Petite Leaves</td><td>1</td></tr>
+<tr><td>🧲 Corrupted Magnet</td><td>1</td></tr>
 <tr><td>💀 Darkrai Essence</td><td>24</td></tr>
 </table>
+<p class="desc">☠️ <b>Efeito:</b> Um medicamento que revive seu Pokémon no Nightmare World.</p>
 </div>
 
-<button class="toggle-btn flying" onclick="toggle('shield')">🛡️ Nightmare Shield Elixir</button>
-<div id="shield" class="content">
-<table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
-<tr><td>🧴 Shield Elixir</td><td>1</td></tr>
-<tr><td>🌑 Nightmare Essence</td><td>4</td></tr>
-<tr><td>🔷 Crystal Fragment</td><td>6</td></tr>
-</table>
-</div>
+<!-- 🧪 ELIXIRS -->
 
 <button class="toggle-btn fire" onclick="toggle('swordsman')">⚔️ Swordsman Elixir</button>
 <div id="swordsman" class="content">
 <table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
+<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🧴 Elixir</td><td>1</td></tr>
 <tr><td>⚔️ Steel Shard</td><td>6</td></tr>
 <tr><td>🔥 Battle Essence</td><td>4</td></tr>
 </table>
+<p class="desc">⚔️ <b>Efeito:</b> COLE AQUI A DESCRIÇÃO OFICIAL DA WIKI PXG</p>
 </div>
 
 <button class="toggle-btn grass" onclick="toggle('healing')">💚 Healing Elixir</button>
 <div id="healing" class="content">
 <table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
+<tr><th>Item</th><th>Qtd</th></tr>
 <tr><td>🧴 Elixir</td><td>1</td></tr>
 <tr><td>🌿 Medicinal Leaf</td><td>10</td></tr>
 <tr><td>💧 Pure Water</td><td>5</td></tr>
 </table>
-</div>
-
-<button class="toggle-btn normal" onclick="toggle('bounty')">💰 Bounty Elixir</button>
-<div id="bounty" class="content">
-<table class="table">
-<tr><th>Item</th><th>Quantidade</th></tr>
-<tr><td>🧴 Elixir</td><td>1</td></tr>
-<tr><td>💎 Rare Dust</td><td>5</td></tr>
-<tr><td>🪙 Golden Fragment</td><td>3</td></tr>
-</table>
+<p class="desc">💚 <b>Efeito:</b> COLE AQUI A DESCRIÇÃO OFICIAL DA WIKI PXG</p>
 </div>
 
 </div>
