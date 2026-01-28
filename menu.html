@@ -17,40 +17,60 @@ body {
 
 /* CONTAINER */
 .container {
-  max-width: 900px;
+  max-width: 950px;
   margin: 70px auto;
   background: rgba(255,255,255,0.96);
-  padding: 26px;
-  border-radius: 18px;
+  padding: 30px;
+  border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.25);
 }
 
 .header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 34px;
 }
 
-/* MENU */
+/* GRID */
 .menu {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  gap: 22px;
 }
 
+/* BOTÕES */
 .menu a {
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 18px;
+  padding: 24px 20px;
+  border-radius: 20px;
   text-align: center;
   text-decoration: none;
-  color: #222;
   font-weight: bold;
+  color: #222;
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .menu a:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+/* TEMAS */
+.btn-conquistas {
+  background: linear-gradient(135deg,#fbc02d,#7cb342);
+}
+
+.btn-crafts {
+  background: linear-gradient(135deg,#8d6e63,#a1887f);
+}
+
+.btn-planejamento {
+  background: linear-gradient(135deg,#90caf9,#1976d2);
+}
+
+.menu small {
+  display: block;
+  margin-top: 6px;
+  font-weight: normal;
 }
 </style>
 </head>
@@ -61,19 +81,24 @@ body {
 
 <div class="header">
   <h1>📂 Menu Principal</h1>
-  <p>Planejamento • Conquistas • Hunts</p>
+  <p>Organização • Conquistas • Crafts</p>
 </div>
 
 <div class="menu">
 
-  <a href="conquistas-negociacoes.html">
-    🏆 Conquistas & Negociações<br>
-    <small>Shinys • Histórico</small>
+  <a href="conquistas-negociacoes.html" class="btn-conquistas">
+    🏆 Conquistas & Negociações
+    <small>Shinys • Histórico • Valores</small>
   </a>
 
-  <a href="planejamentos-gerais.html">
-    📘 Planejamentos Gerais<br>
-    <small>Testes • Estratégias</small>
+  <a href="crafts.html" class="btn-crafts">
+    🛠️ Crafts & Plantações
+    <small>Berries • Elixires • Recursos</small>
+  </a>
+
+  <a href="planejamentos-gerais.html" class="btn-planejamento">
+    📘 Planejamentos Gerais
+    <small>Testes • Hunts • Estratégias</small>
   </a>
 
 </div>
