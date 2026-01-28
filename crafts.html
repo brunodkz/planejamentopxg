@@ -86,6 +86,9 @@ body {
   cursor: pointer;
   margin-bottom: 10px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* CORES */
@@ -124,8 +127,18 @@ body {
   font-size: 0.95em;
 }
 
-/* GRUPOS */
+/* CRAFT */
 .craft { display: block; }
+
+/* FAVORITOS */
+.fav {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.fav.active {
+  color: gold;
+}
 </style>
 </head>
 
@@ -140,12 +153,13 @@ body {
   <p>Berries • Revives • Elixirs</p>
 </div>
 
-<!-- FILTRO -->
+<!-- FILTROS -->
 <div class="filters">
   <button onclick="filterCrafts('all')">📦 Todos</button>
   <button onclick="filterCrafts('berry')">🍓 Berries</button>
   <button onclick="filterCrafts('revive')">☠️ Revives</button>
   <button onclick="filterCrafts('elixir')">🧪 Elixirs</button>
+  <button onclick="filterCrafts('fav')">⭐ Favoritos</button>
 </div>
 
 <!-- BUSCA -->
@@ -155,8 +169,11 @@ body {
 
 <!-- 🍓 BERRIES -->
 
-<div class="craft berry">
-<button class="toggle-btn fire" onclick="toggle('occa')">🔥 Occa Berry</button>
+<div class="craft berry" data-id="occa">
+<button class="toggle-btn fire" onclick="toggle('occa')">
+🔥 Occa Berry
+<span class="fav" onclick="toggleFav(event,'occa')">☆</span>
+</button>
 <div id="occa" class="content">
 <table class="table">
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
@@ -167,8 +184,11 @@ body {
 </div>
 </div>
 
-<div class="craft berry">
-<button class="toggle-btn grass" onclick="toggle('rindo')">🌿 Rindo Berry</button>
+<div class="craft berry" data-id="rindo">
+<button class="toggle-btn grass" onclick="toggle('rindo')">
+🌿 Rindo Berry
+<span class="fav" onclick="toggleFav(event,'rindo')">☆</span>
+</button>
 <div id="rindo" class="content">
 <table class="table">
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
@@ -179,8 +199,11 @@ body {
 </div>
 </div>
 
-<div class="craft berry">
-<button class="toggle-btn electric" onclick="toggle('sitrus')">🍋 Sitrus Berry</button>
+<div class="craft berry" data-id="sitrus">
+<button class="toggle-btn electric" onclick="toggle('sitrus')">
+🍋 Sitrus Berry
+<span class="fav" onclick="toggleFav(event,'sitrus')">☆</span>
+</button>
 <div id="sitrus" class="content">
 <table class="table">
 <tr><td>🎒 Major Seed Bag</td><td>1</td></tr>
@@ -193,8 +216,11 @@ body {
 
 <!-- ☠️ REVIVE -->
 
-<div class="craft revive">
-<button class="toggle-btn dark" onclick="toggle('nightmare')">☠️ Nightmare Revive</button>
+<div class="craft revive" data-id="nightmare">
+<button class="toggle-btn dark" onclick="toggle('nightmare')">
+☠️ Nightmare Revive
+<span class="fav" onclick="toggleFav(event,'nightmare')">☆</span>
+</button>
 <div id="nightmare" class="content">
 <table class="table">
 <tr><td>🧬 Revive</td><td>1</td></tr>
@@ -208,8 +234,11 @@ body {
 
 <!-- 🧪 ELIXIRS -->
 
-<div class="craft elixir">
-<button class="toggle-btn fire" onclick="toggle('swordsman')">⚔️ Swordsman Elixir</button>
+<div class="craft elixir" data-id="swordsman">
+<button class="toggle-btn fire" onclick="toggle('swordsman')">
+⚔️ Swordsman Elixir
+<span class="fav" onclick="toggleFav(event,'swordsman')">☆</span>
+</button>
 <div id="swordsman" class="content">
 <table class="table">
 <tr><td>🧴 Elixir</td><td>1</td></tr>
@@ -220,8 +249,11 @@ body {
 </div>
 </div>
 
-<div class="craft elixir">
-<button class="toggle-btn psychic" onclick="toggle('healing')">💜 Healing Elixir</button>
+<div class="craft elixir" data-id="healing">
+<button class="toggle-btn psychic" onclick="toggle('healing')">
+💜 Healing Elixir
+<span class="fav" onclick="toggleFav(event,'healing')">☆</span>
+</button>
 <div id="healing" class="content">
 <table class="table">
 <tr><td>🧴 Elixir</td><td>1</td></tr>
@@ -235,15 +267,45 @@ body {
 </div>
 
 <script>
+const favKey = "pxgCraftFavs";
+let favorites = JSON.parse(localStorage.getItem(favKey)) || [];
+
 function toggle(id) {
   const el = document.getElementById(id);
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
 
+function toggleFav(event, id) {
+  event.stopPropagation();
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(f => f !== id);
+  } else {
+    favorites.push(id);
+  }
+  localStorage.setItem(favKey, JSON.stringify(favorites));
+  updateFavIcons();
+}
+
+function updateFavIcons() {
+  document.querySelectorAll(".craft").forEach(craft => {
+    const id = craft.dataset.id;
+    const star = craft.querySelector(".fav");
+    if (!star) return;
+    if (favorites.includes(id)) {
+      star.textContent = "★";
+      star.classList.add("active");
+    } else {
+      star.textContent = "☆";
+      star.classList.remove("active");
+    }
+  });
+}
+
 function filterCrafts(type) {
   document.querySelectorAll('.craft').forEach(c => {
-    c.style.display =
-      (type === 'all' || c.classList.contains(type)) ? 'block' : 'none';
+    if (type === 'all') c.style.display = 'block';
+    else if (type === 'fav') c.style.display = favorites.includes(c.dataset.id) ? 'block' : 'none';
+    else c.style.display = c.classList.contains(type) ? 'block' : 'none';
   });
 }
 
@@ -254,6 +316,8 @@ function searchCrafts() {
     craft.style.display = text.includes(input) ? 'block' : 'none';
   });
 }
+
+document.addEventListener("DOMContentLoaded", updateFavIcons);
 </script>
 
 </body>
