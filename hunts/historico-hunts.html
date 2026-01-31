@@ -41,7 +41,22 @@ body {
 
 .header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+/* FILTROS */
+.filters {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.filters input,
+.filters select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-weight: bold;
 }
 
 /* LISTA DE HUNTS */
@@ -88,10 +103,26 @@ body {
     <p>Registro organizado por data • eficiência • evolução</p>
   </div>
 
+  <!-- FILTROS -->
+  <div class="filters">
+    <input type="text" id="playerFilter" placeholder="👥 Filtrar por player">
+    <input type="number" id="lootFilter" placeholder="💰 Loot mínimo (KK)" step="0.1">
+    <select id="dateFilter">
+      <option value="">📅 Ordenar por data</option>
+      <option value="desc">Mais recente</option>
+      <option value="asc">Mais antiga</option>
+    </select>
+  </div>
+
   <div class="hunt-list">
 
-    <!-- HUNT 1 -->
-    <a class="hunt-card" href="hunt-sandaconda-2026-01-27.html">
+    <!-- SANDACONDA -->
+    <a class="hunt-card"
+       href="hunt-sandaconda-2026-01-27.html"
+       data-date="2026-01-27"
+       data-loot="7.6"
+       data-players="Abs Snoow Abs Nobru">
+
       <div class="hunt-title">🐍 Sandaconda</div>
       <div class="hunt-meta">
         📆 Data: 27/01/2026<br>
@@ -100,19 +131,63 @@ body {
       </div>
     </a>
 
-<!-- HUNT 2 -->
-<a class="hunt-card" href="hunt-mixed-grass-2026-01-29.html">
-  <div class="hunt-title">🌿 Mixed Grass</div>
-  <div class="hunt-meta">
-    📆 Data: 29/01/2026<br>
-    👥 Players: Abs Nobru<br>
-    ⏱️ Tempo: 2h • 💰 Loot: 2.6 KK
+    <!-- MIXED GRASS -->
+    <a class="hunt-card"
+       href="hunt-mixed-grass-2026-01-29.html"
+       data-date="2026-01-29"
+       data-loot="2.6"
+       data-players="Abs Nobru">
+
+      <div class="hunt-title">🌿 Mixed Grass</div>
+      <div class="hunt-meta">
+        📆 Data: 29/01/2026<br>
+        👥 Players: Abs Nobru<br>
+        ⏱️ Tempo: 2h • 💰 Loot: 2.6 KK
+      </div>
+    </a>
+
   </div>
-</a>
-
-
-  </div>
-
 </div>
+
+<script>
+const playerInput = document.getElementById("playerFilter");
+const lootInput = document.getElementById("lootFilter");
+const dateSelect = document.getElementById("dateFilter");
+const huntList = document.querySelector(".hunt-list");
+
+function applyFilters() {
+  const playerValue = playerInput.value.toLowerCase();
+  const lootValue = parseFloat(lootInput.value) || 0;
+
+  document.querySelectorAll(".hunt-card").forEach(hunt => {
+    const players = hunt.dataset.players.toLowerCase();
+    const loot = parseFloat(hunt.dataset.loot);
+
+    const matchPlayer = players.includes(playerValue);
+    const matchLoot = loot >= lootValue;
+
+    hunt.style.display = (matchPlayer && matchLoot) ? "block" : "none";
+  });
+}
+
+function sortByDate(order) {
+  const hunts = Array.from(document.querySelectorAll(".hunt-card"));
+
+  hunts.sort((a, b) => {
+    return order === "asc"
+      ? new Date(a.dataset.date) - new Date(b.dataset.date)
+      : new Date(b.dataset.date) - new Date(a.dataset.date);
+  });
+
+  hunts.forEach(h => huntList.appendChild(h));
+}
+
+playerInput.addEventListener("input", applyFilters);
+lootInput.addEventListener("input", applyFilters);
+dateSelect.addEventListener("change", () => {
+  if (dateSelect.value) sortByDate(dateSelect.value);
+});
+</script>
+
 </body>
 </html>
