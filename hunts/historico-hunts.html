@@ -91,25 +91,39 @@ body {
   color: #444;
 }
 
-/* 🏆 MAIS LUCRATIVA */
-.top-hunt {
+/* 🥇🥈🥉 TOP 3 */
+.top-1 {
   border: 3px solid #fbc02d;
   background: linear-gradient(135deg, #fffde7, #fff9c4);
 }
 
-.top-hunt::before {
-  content: "🏆 MAIS LUCRATIVA";
+.top-2 {
+  border: 3px dashed #b0bec5;
+  background: #fafafa;
+}
+
+.top-3 {
+  border: 3px dashed #cd7f32;
+  background: #fafafa;
+}
+
+.top-1::before,
+.top-2::before,
+.top-3::before {
   position: absolute;
   top: -12px;
   right: 16px;
-  background: #fbc02d;
-  color: #000;
   font-weight: bold;
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 0.75em;
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
+
+.top-1::before { content: "🥇 TOP 1"; background: #fbc02d; color:#000; }
+.top-2::before { content: "🥈 TOP 2"; background: #b0bec5; }
+.top-3::before { content: "🥉 TOP 3"; background: #cd7f32; }
+
 </style>
 </head>
 
@@ -137,13 +151,12 @@ body {
 
   <div class="hunt-list">
 
-    <!-- 🏆 SANDACONDA -->
-    <a class="hunt-card top-hunt"
+    <!-- SANDACONDA -->
+    <a class="hunt-card"
        href="hunt-sandaconda-2026-01-27.html"
        data-date="2026-01-27"
        data-loot="7.6"
        data-players="Abs Snoow Abs Nobru">
-
       <div class="hunt-title">🐍 Sandaconda</div>
       <div class="hunt-meta">
         📆 Data: 27/01/2026<br>
@@ -152,33 +165,31 @@ body {
       </div>
     </a>
 
-    <!-- 🍏 APPLETUN -->
-    <a class="hunt-card"
-       href="hunt-appletun-2027-01-30.html"
-       data-date="2027-01-30"
-       data-loot="1.6"
-       data-players="Elegancy">
-
-      <div class="hunt-title">🍏 Appletun</div>
-      <div class="hunt-meta">
-        📆 Data: 30/01/2027<br>
-        👥 Player: Elegancy<br>
-        ⏱️ Tempo: 1h • 💰 Loot: 1.6 KK
-      </div>
-    </a>
-
-    <!-- 🌿 MIXED GRASS -->
+    <!-- MIXED GRASS -->
     <a class="hunt-card"
        href="hunt-mixed-grass-2026-01-29.html"
        data-date="2026-01-29"
        data-loot="2.6"
        data-players="Abs Nobru">
-
       <div class="hunt-title">🌿 Mixed Grass</div>
       <div class="hunt-meta">
         📆 Data: 29/01/2026<br>
         👥 Player: Abs Nobru<br>
         ⏱️ Tempo: 2h • 💰 Loot: 2.6 KK
+      </div>
+    </a>
+
+    <!-- APPLETUN -->
+    <a class="hunt-card"
+       href="hunt-appletun-2027-01-30.html"
+       data-date="2027-01-30"
+       data-loot="1.6"
+       data-players="Elegancy">
+      <div class="hunt-title">🍏 Appletun</div>
+      <div class="hunt-meta">
+        📆 Data: 30/01/2027<br>
+        👥 Player: Elegancy<br>
+        ⏱️ Tempo: 1h • 💰 Loot: 1.6 KK
       </div>
     </a>
 
@@ -190,39 +201,52 @@ const playerInput = document.getElementById("playerFilter");
 const lootInput = document.getElementById("lootFilter");
 const dateSelect = document.getElementById("dateFilter");
 const huntList = document.querySelector(".hunt-list");
+const hunts = Array.from(document.querySelectorAll(".hunt-card"));
 
+/* TOP 3 AUTOMÁTICO */
+function applyTop3() {
+  hunts.forEach(h => h.classList.remove("top-1","top-2","top-3"));
+
+  const sorted = [...hunts].sort(
+    (a,b) => parseFloat(b.dataset.loot) - parseFloat(a.dataset.loot)
+  );
+
+  if (sorted[0]) sorted[0].classList.add("top-1");
+  if (sorted[1]) sorted[1].classList.add("top-2");
+  if (sorted[2]) sorted[2].classList.add("top-3");
+}
+
+/* FILTROS */
 function applyFilters() {
-  const playerValue = playerInput.value.toLowerCase();
-  const lootValue = parseFloat(lootInput.value) || 0;
+  const p = playerInput.value.toLowerCase();
+  const l = parseFloat(lootInput.value) || 0;
 
-  document.querySelectorAll(".hunt-card").forEach(hunt => {
-    const players = hunt.dataset.players.toLowerCase();
-    const loot = parseFloat(hunt.dataset.loot);
-
-    const matchPlayer = players.includes(playerValue);
-    const matchLoot = loot >= lootValue;
-
-    hunt.style.display = (matchPlayer && matchLoot) ? "block" : "none";
+  hunts.forEach(h => {
+    const okP = h.dataset.players.toLowerCase().includes(p);
+    const okL = parseFloat(h.dataset.loot) >= l;
+    h.style.display = (okP && okL) ? "block" : "none";
   });
 }
 
+/* ORDENAR POR DATA */
 function sortByDate(order) {
-  const hunts = Array.from(document.querySelectorAll(".hunt-card"));
-
-  hunts.sort((a, b) => {
-    return order === "asc"
+  const sorted = [...hunts].sort((a,b) =>
+    order === "asc"
       ? new Date(a.dataset.date) - new Date(b.dataset.date)
-      : new Date(b.dataset.date) - new Date(a.dataset.date);
-  });
-
-  hunts.forEach(h => huntList.appendChild(h));
+      : new Date(b.dataset.date) - new Date(a.dataset.date)
+  );
+  sorted.forEach(h => huntList.appendChild(h));
 }
 
+/* EVENTOS */
 playerInput.addEventListener("input", applyFilters);
 lootInput.addEventListener("input", applyFilters);
 dateSelect.addEventListener("change", () => {
   if (dateSelect.value) sortByDate(dateSelect.value);
 });
+
+/* INIT */
+applyTop3();
 </script>
 
 </body>
