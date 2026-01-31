@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌿 Hunt • Mixed Grass</title>
+<title>📘 Planejamentos Gerais • PXG</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -11,7 +11,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: url("../assets/pokeballs-bg-v2.png") repeat;
+  background: url("./assets/pokeballs-bg-v2.png") repeat;
   background-size: 300px;
 }
 
@@ -20,14 +20,12 @@ body {
   position: fixed;
   top: 18px;
   left: 18px;
-  background: linear-gradient(135deg,#2e7d32,#1b5e20);
+  background: linear-gradient(135deg,#c62828,#8e0000);
   color: #fff;
   padding: 10px 16px;
   border-radius: 14px;
   text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-  z-index: 999;
 }
 
 /* CONTAINER */
@@ -42,79 +40,60 @@ body {
 
 .header {
   text-align: center;
-  margin-bottom: 26px;
+  margin-bottom: 30px;
 }
 
-/* CARD */
-.card {
-  background: #f1f8e9;
+/* BOTÕES */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.menu a {
+  background: #f5f5f5;
   padding: 20px;
   border-radius: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  margin-bottom: 20px;
-}
-
-.card h2 {
-  margin-top: 0;
-  border-bottom: 2px solid #c5e1a5;
-  padding-bottom: 8px;
-  color: #2e7d32;
-}
-
-/* LISTA */
-.list {
-  line-height: 1.8;
-  font-weight: bold;
-  color: #1b5e20;
-}
-
-/* DESTAQUE FINAL */
-.highlight {
-  background: linear-gradient(135deg,#2e7d32,#1b5e20);
-  color: #fff;
-  padding: 14px;
-  border-radius: 14px;
   text-align: center;
-  margin-top: 20px;
-  font-size: 1.1em;
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transition: transform 0.2s;
+}
+
+.menu a:hover {
+  transform: scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<a href="../planejamentos-gerais.html" class="back-btn">⬅️ Planejamentos</a>
+<a href="menu.html" class="back-btn">⬅️ Menu</a>
 
 <div class="container">
 
-<div class="header">
-  <h1>🌿 Hunt de Mixed Grass</h1>
-  <p>Teste de eficiência • Área de vegetação</p>
-</div>
-
-<div class="card">
-  <h2>📍 Informações Gerais</h2>
-  <div class="list">
-    👥 Players: Abs Nobru<br>
-    ⏱️ Tempo: 2 horas<br>
-    🧪 Bônus ativos:<br>
-    &nbsp;&nbsp;🧴 Bounty Elixir (2x)<br>
-    &nbsp;&nbsp;⭐ Chocolate Bar (1x)<br>
-    &nbsp;&nbsp;♑ +5% Rune
+  <div class="header">
+    <h1>📘 Planejamentos Gerais</h1>
+    <p>Organização • Testes • Estratégia</p>
   </div>
-</div>
 
-<div class="card">
-  <h2>⚔️ Resultados da Hunt</h2>
-  <div class="list">
-    🌱 Pokémons derrotados: <b>617</b><br>
-    💰 Loot final: <b>2.6 KK</b>
+  <div class="menu">
+
+    <!-- TESTES DE HUNTS (SANDACONDA, ETC) -->
+    <a href="hunts/historico-hunts.html">
+      🧪 Testes de Hunts<br>
+      <small>Resultados e métricas</small>
+    </a>
+
+    <!-- MIXED GRASS -->
+    <a href="hunts/hunt-mixed-grass-2026-01-29.html">
+      🌿 Mixed Grass<br>
+      <small>Hunt • Área de vegetação</small>
+    </a>
+
   </div>
-</div>
-
-<div class="highlight">
-  📊 Média: <b>308 pokémons/hora</b> • 💰 <b>1.3 KK/h</b>
-</div>
 
 </div>
 </body>
