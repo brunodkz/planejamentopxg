@@ -59,7 +59,7 @@ body {
   font-weight: bold;
 }
 
-/* LISTA DE HUNTS */
+/* LISTA */
 .hunt-list {
   display: grid;
   gap: 18px;
@@ -73,6 +73,7 @@ body {
   text-decoration: none;
   color: #222;
   transition: transform 0.2s;
+  position: relative;
 }
 
 .hunt-card:hover {
@@ -88,6 +89,26 @@ body {
   margin-top: 8px;
   font-size: 0.95em;
   color: #444;
+}
+
+/* 🏆 MAIS LUCRATIVA */
+.top-hunt {
+  border: 3px solid #fbc02d;
+  background: linear-gradient(135deg, #fffde7, #fff9c4);
+}
+
+.top-hunt::before {
+  content: "🏆 MAIS LUCRATIVA";
+  position: absolute;
+  top: -12px;
+  right: 16px;
+  background: #fbc02d;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 </style>
 </head>
@@ -116,8 +137,8 @@ body {
 
   <div class="hunt-list">
 
-    <!-- SANDACONDA -->
-    <a class="hunt-card"
+    <!-- 🏆 SANDACONDA -->
+    <a class="hunt-card top-hunt"
        href="hunt-sandaconda-2026-01-27.html"
        data-date="2026-01-27"
        data-loot="7.6"
@@ -131,17 +152,22 @@ body {
       </div>
     </a>
 
-    <!-- HUNT 2 -->
-<a class="hunt-card" href="hunt-appletun-2027-01-30.html">
-  <div class="hunt-title">🍏 Appletun</div>
-  <div class="hunt-meta">
-    📆 Data: 30/01/2027<br>
-    👥 Player: Elegancy<br>
-    ⏱️ Tempo: 1h • 💰 Loot: 1.6 KK
-  </div>
-</a>
+    <!-- 🍏 APPLETUN -->
+    <a class="hunt-card"
+       href="hunt-appletun-2027-01-30.html"
+       data-date="2027-01-30"
+       data-loot="1.6"
+       data-players="Elegancy">
 
-    <!-- MIXED GRASS -->
+      <div class="hunt-title">🍏 Appletun</div>
+      <div class="hunt-meta">
+        📆 Data: 30/01/2027<br>
+        👥 Player: Elegancy<br>
+        ⏱️ Tempo: 1h • 💰 Loot: 1.6 KK
+      </div>
+    </a>
+
+    <!-- 🌿 MIXED GRASS -->
     <a class="hunt-card"
        href="hunt-mixed-grass-2026-01-29.html"
        data-date="2026-01-29"
@@ -151,7 +177,7 @@ body {
       <div class="hunt-title">🌿 Mixed Grass</div>
       <div class="hunt-meta">
         📆 Data: 29/01/2026<br>
-        👥 Players: Abs Nobru<br>
+        👥 Player: Abs Nobru<br>
         ⏱️ Tempo: 2h • 💰 Loot: 2.6 KK
       </div>
     </a>
