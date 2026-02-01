@@ -60,6 +60,7 @@ body {
   color: #222;
   font-weight: bold;
   transition: transform 0.2s;
+  position: relative;
 }
 
 .card:hover {
@@ -72,6 +73,38 @@ body {
   font-weight: normal;
   color: #555;
 }
+
+/* 🏆 TOP 3 */
+.top1 {
+  border: 3px solid #fbc02d;
+  background: linear-gradient(135deg,#fffde7,#fff9c4);
+}
+
+.top2 {
+  border: 3px solid #b0bec5;
+  background: #eceff1;
+}
+
+.top3 {
+  border: 3px solid #bcaaa4;
+  background: #efebe9;
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  right: 14px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.top1 .badge { background: #fbc02d; }
+.top2 .badge { background: #b0bec5; }
+.top3 .badge { background: #bcaaa4; }
 </style>
 </head>
 
@@ -83,25 +116,41 @@ body {
 
 <div class="header">
   <h1>📊 Histórico de Hunts</h1>
-  <p>Organizado por data e respawn</p>
+  <p>Top 3 automático por loot • organizado por eficiência</p>
 </div>
 
-<div class="grid">
+<div class="grid" id="huntGrid">
 
-<a href="hunt-sandaconda-2026-01-25.html" class="card">
-🐍 Sandaconda
-<small>📅 25/01/2026 • 2h • 7.6KK</small>
-</a>
+  <!-- HUNT -->
+  <a href="hunt-sandaconda-2026-01-25.html" class="card" data-loot="7.6">
+    🐍 Sandaconda
+    <small>📅 25/01/2026 • 2h • 7.6 KK</small>
+  </a>
 
-<a href="hunt-sandaconda-2026-01-27.html" class="card">
-🐍 Sandaconda
-<small>📅 27/01/2026 • 2h • 8.1KK</small>
-</a>
+  <a href="hunt-sandaconda-2026-01-27.html" class="card" data-loot="8.1">
+    🐍 Sandaconda
+    <small>📅 27/01/2026 • 2h • 8.1 KK</small>
+  </a>
 
-<!-- novos hunts entram aqui -->
-
+  <!-- novas hunts entram aqui -->
 </div>
 
 </div>
+
+<script>
+const cards = Array.from(document.querySelectorAll(".card"));
+
+cards
+  .sort((a, b) => parseFloat(b.dataset.loot) - parseFloat(a.dataset.loot))
+  .slice(0, 3)
+  .forEach((card, index) => {
+    card.classList.add(`top${index + 1}`);
+    const badge = document.createElement("div");
+    badge.className = "badge";
+    badge.textContent = `🏆 TOP ${index + 1}`;
+    card.appendChild(badge);
+  });
+</script>
+
 </body>
 </html>
