@@ -11,6 +11,9 @@
   --card:#1f2933;
   --solo:#2563eb;
   --duo:#7c3aed;
+  --grass:#16a34a;
+  --water:#0284c7;
+  --desert:#ca8a04;
 }
 
 *{box-sizing:border-box}
@@ -27,6 +30,8 @@ header{
   padding:24px;
   text-align:center;
 }
+header h1{margin:0}
+header p{opacity:.7}
 
 /* GRID */
 .dashboard{
@@ -40,10 +45,11 @@ header{
 
 /* SIDEBAR */
 .sidebar{
-  background:#111827;
+  background:var(--panel);
   border-radius:18px;
   padding:20px;
 }
+.sidebar h2{text-align:center;margin-top:0}
 
 .sidebar ul{
   list-style:none;
@@ -75,14 +81,13 @@ header{
 
 /* CONTENT */
 .content{
-  display:flex;
-  flex-direction:column;
+  display:grid;
   gap:18px;
 }
 
 /* CARD */
 .hunt-card{
-  background:#1f2933;
+  background:var(--card);
   border-radius:18px;
   padding:18px;
   text-decoration:none;
@@ -95,8 +100,31 @@ header{
 }
 .hunt-card:hover{transform:scale(1.02)}
 
+.hunt-title{
+  font-size:1.3em;
+  font-weight:bold;
+}
+
+/* BADGES */
+.badges{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.badge{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:.75em;
+  font-weight:bold;
+  background:#020617;
+}
+
+/* TYPES */
 .solo{border-left:6px solid var(--solo)}
 .duo{border-left:6px solid var(--duo)}
+.grass{background:linear-gradient(135deg,#052e16,#064e3b)}
+.water{background:linear-gradient(135deg,#020617,#082f49)}
+.desert{background:linear-gradient(135deg,#451a03,#78350f)}
 
 /* TOP BADGES */
 .top-1::after,
@@ -120,6 +148,7 @@ header{
 
 <header>
   <h1>📊 Dashboard PXG</h1>
+  <p>Eficiência • Inteligência • Decisão</p>
 </header>
 
 <section class="dashboard">
@@ -130,10 +159,18 @@ header{
 
   <div class="filters">
     <input type="text" id="search" placeholder="🔍 Buscar hunt...">
+
     <select id="filterType">
-      <option value="">Todos</option>
+      <option value="">Todos os tipos</option>
       <option value="solo">Solo</option>
       <option value="duo">Duo</option>
+    </select>
+
+    <select id="filterBiome">
+      <option value="">Todos os biomas</option>
+      <option value="grass">Grass</option>
+      <option value="water">Water</option>
+      <option value="desert">Desert</option>
     </select>
   </div>
 
@@ -143,24 +180,29 @@ header{
 <!-- CONTENT -->
 <main class="content" id="hunts">
 
-<a class="hunt-card solo" data-loot="2.6">
-  🌿 Mixed Grass • 💰 2.6 KK
+<a class="hunt-card solo grass" data-loot="2.6">
+  <div class="hunt-title">🌿 Mixed Grass</div>
+  <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 2.6 KK</span></div>
 </a>
 
-<a class="hunt-card solo" data-loot="2.9">
-  🌿 Mixed Grass (Sul) • 💰 2.9 KK
+<a class="hunt-card solo grass" data-loot="2.9">
+  <div class="hunt-title">🌿 Mixed Grass (Sul)</div>
+  <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 2.9 KK</span></div>
 </a>
 
-<a class="hunt-card solo" data-loot="3.1">
-  🍎 Appletun • 💰 3.1 KK
+<a class="hunt-card solo grass" data-loot="3.1">
+  <div class="hunt-title">🍎 Appletun</div>
+  <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 3.1 KK</span></div>
 </a>
 
-<a class="hunt-card solo" data-loot="3.6">
-  🦈 Sharpedo • 💰 3.6 KK
+<a class="hunt-card solo water" data-loot="3.6">
+  <div class="hunt-title">🦈 Sharpedo</div>
+  <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 3.6 KK</span></div>
 </a>
 
-<a class="hunt-card duo" data-loot="7.6">
-  🐍 Sandaconda • 💰 7.6 KK
+<a class="hunt-card duo desert" data-loot="7.6">
+  <div class="hunt-title">🐍 Sandaconda</div>
+  <div class="badges"><span class="badge">👥 DUO</span><span class="badge">💰 7.6 KK</span></div>
 </a>
 
 </main>
@@ -169,39 +211,48 @@ header{
 <script>
 const hunts = [...document.querySelectorAll(".hunt-card")];
 const ranking = document.getElementById("ranking");
+const huntsContainer = document.getElementById("hunts");
 
-/* ===== ORDENACAO REAL ===== */
+/* ===== RANKING E ORDENACAO DEFINITIVA ===== */
 const sorted = [...hunts].sort(
-  (a,b)=> Number(b.dataset.loot) - Number(a.dataset.loot)
+  (a, b) => Number(b.dataset.loot) - Number(a.dataset.loot)
 );
 
-/* ranking lateral */
+/* SIDEBAR */
 ranking.innerHTML = "";
-sorted.forEach((hunt,index)=>{
-  if(index < 3) hunt.classList.add(`top-${index+1}`);
+sorted.forEach((hunt, index) => {
+  if (index < 3) hunt.classList.add(`top-${index + 1}`);
+
+  const medal =
+    index === 0 ? "🥇" :
+    index === 1 ? "🥈" :
+    index === 2 ? "🥉" : "🔹";
 
   ranking.innerHTML += `
-    <li>TOP ${index+1} — ${hunt.innerText}</li>
+    <li>${medal} TOP ${index + 1} — ${hunt.querySelector(".hunt-title").innerText}</li>
   `;
-
-  /* ordem visual sem quebrar DOM */
-  hunt.style.order = index;
 });
 
-/* FILTROS */
+/* ORDENAR VISUALMENTE OS CARDS */
+huntsContainer.innerHTML = "";
+sorted.forEach(hunt => huntsContainer.appendChild(hunt));
+
+/* FILTER SYSTEM */
 const search = document.getElementById("search");
 const filterType = document.getElementById("filterType");
+const filterBiome = document.getElementById("filterBiome");
 
 function applyFilters(){
   hunts.forEach(h=>{
-    const txt = h.innerText.toLowerCase();
-    const okType = !filterType.value || h.classList.contains(filterType.value);
-    const okSearch = txt.includes(search.value.toLowerCase());
-    h.style.display = okType && okSearch ? "" : "none";
+    const name = h.innerText.toLowerCase();
+    const typeOk = !filterType.value || h.classList.contains(filterType.value);
+    const biomeOk = !filterBiome.value || h.classList.contains(filterBiome.value);
+    const searchOk = name.includes(search.value.toLowerCase());
+    h.style.display = typeOk && biomeOk && searchOk ? "" : "none";
   });
 }
 
-[search, filterType].forEach(el =>
+[search, filterType, filterBiome].forEach(el =>
   el.addEventListener("input", applyFilters)
 );
 </script>
