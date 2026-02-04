@@ -11,6 +11,15 @@
   --card:#1f2933;
   --solo:#2563eb;
   --duo:#7c3aed;
+
+  --grass1:#052e16;
+  --grass2:#064e3b;
+
+  --water1:#020617;
+  --water2:#082f49;
+
+  --earth1:#451a03;
+  --earth2:#78350f;
 }
 
 *{box-sizing:border-box}
@@ -81,13 +90,12 @@ header{
 
 /* CARD */
 .hunt-card{
-  background:var(--card);
   border-radius:18px;
   padding:18px;
   text-decoration:none;
   color:#e5e7eb;
   display:grid;
-  gap:6px;
+  gap:8px;
   position:relative;
   box-shadow:0 8px 25px rgba(0,0,0,.4);
   transition:.2s;
@@ -97,13 +105,19 @@ header{
 .solo{border-left:6px solid var(--solo)}
 .duo{border-left:6px solid var(--duo)}
 
-.hunt-title{font-size:1.1em;font-weight:bold}
-.hunt-date{opacity:.7;font-size:.85em}
+.grass{background:linear-gradient(135deg,var(--grass1),var(--grass2))}
+.water{background:linear-gradient(135deg,var(--water1),var(--water2))}
+.earth{background:linear-gradient(135deg,var(--earth1),var(--earth2))}
+
+.hunt-title{font-size:1.15em;font-weight:bold}
+.hunt-meta{opacity:.8;font-size:.85em}
 
 /* TOP BADGES */
 .top-1::after,
 .top-2::after,
-.top-3::after{
+.top-3::after,
+.top-4::after,
+.top-5::after{
   position:absolute;
   top:-12px;
   right:14px;
@@ -112,9 +126,12 @@ header{
   font-size:.75em;
   font-weight:bold;
 }
+
 .top-1::after{content:"🥇 TOP 1";background:#facc15;color:#000}
 .top-2::after{content:"🥈 TOP 2";background:#cbd5e1;color:#000}
 .top-3::after{content:"🥉 TOP 3";background:#cd7f32;color:#000}
+.top-4::after{content:"TOP 4";background:#334155}
+.top-5::after{content:"TOP 5";background:#334155}
 </style>
 </head>
 
@@ -128,60 +145,57 @@ header{
 <section class="dashboard">
 
 <aside class="sidebar">
-  <h2>🏆 Rankings PXG</h2>
+  <h2>🏆 Ranking PXG</h2>
 
   <div class="filters">
     <input type="text" id="search" placeholder="🔍 Buscar hunt...">
-    <select id="filterType">
-      <option value="">Todos</option>
-      <option value="solo">Solo</option>
-      <option value="duo">Duo</option>
+    <select id="filterBiome">
+      <option value="">Todos os biomas</option>
+      <option value="grass">Grass</option>
+      <option value="water">Water</option>
+      <option value="earth">Earth</option>
     </select>
   </div>
 
   <ul id="ranking"></ul>
+  <p id="totalTop5" style="margin-top:12px;font-weight:bold"></p>
 </aside>
 
 <main class="content" id="hunts">
 
-<a href="hunts/hunt-2026-01-10-mixed-grass.html"
-   class="hunt-card solo"
-   data-loot="2.6"
-   data-date="2026-01-10">
+<a href="hunts/hunt-mixed-grass-2027-01-10.html"
+   class="hunt-card solo grass"
+   data-loot="2.6">
   <div class="hunt-title">🌿 Mixed Grass</div>
-  <div class="hunt-date">📅 10/01/2026 • 💰 2.6 KK</div>
+  <div class="hunt-meta">📅 10/01/2027 • 💰 2.6 KK</div>
 </a>
 
-<a href="hunts/hunt-2026-01-12-mixed-grass-sul.html"
-   class="hunt-card solo"
-   data-loot="2.9"
-   data-date="2026-01-12">
+<a href="hunts/hunt-mixed-grass-sul-2027-01-12.html"
+   class="hunt-card solo grass"
+   data-loot="2.9">
   <div class="hunt-title">🌿 Mixed Grass (Sul)</div>
-  <div class="hunt-date">📅 12/01/2026 • 💰 2.9 KK</div>
+  <div class="hunt-meta">📅 12/01/2027 • 💰 2.9 KK</div>
 </a>
 
-<a href="hunts/hunt-2026-01-15-appletun.html"
-   class="hunt-card solo"
-   data-loot="3.1"
-   data-date="2026-01-15">
+<a href="hunts/hunt-appletun-2027-01-30.html"
+   class="hunt-card solo grass"
+   data-loot="3.1">
   <div class="hunt-title">🍎 Appletun</div>
-  <div class="hunt-date">📅 15/01/2026 • 💰 3.1 KK</div>
+  <div class="hunt-meta">📅 30/01/2027 • 💰 3.1 KK</div>
 </a>
 
-<a href="hunts/hunt-2026-01-18-sharpedo.html"
-   class="hunt-card solo"
-   data-loot="3.6"
-   data-date="2026-01-18">
+<a href="hunts/hunt-sharpedo-2027-02-02.html"
+   class="hunt-card solo water"
+   data-loot="3.6">
   <div class="hunt-title">🦈 Sharpedo</div>
-  <div class="hunt-date">📅 18/01/2026 • 💰 3.6 KK</div>
+  <div class="hunt-meta">📅 02/02/2027 • 💰 3.6 KK</div>
 </a>
 
-<a href="hunts/hunt-2026-01-20-sandaconda.html"
-   class="hunt-card duo"
-   data-loot="7.6"
-   data-date="2026-01-20">
+<a href="hunts/hunt-sandaconda-2027-02-10.html"
+   class="hunt-card duo earth"
+   data-loot="7.6">
   <div class="hunt-title">🐍 Sandaconda</div>
-  <div class="hunt-date">📅 20/01/2026 • 💰 7.6 KK</div>
+  <div class="hunt-meta">📅 10/02/2027 • 💰 7.6 KK</div>
 </a>
 
 </main>
@@ -190,33 +204,38 @@ header{
 <script>
 const hunts=[...document.querySelectorAll(".hunt-card")];
 const ranking=document.getElementById("ranking");
+const totalTop5=document.getElementById("totalTop5");
 
-/* ORDENAR POR LOOT */
+/* ORDENAR */
 const sorted=[...hunts].sort(
   (a,b)=>Number(b.dataset.loot)-Number(a.dataset.loot)
 );
 
-/* Ranking + ordem visual */
+/* TOP 5 */
+let soma=0;
 ranking.innerHTML="";
-sorted.forEach((hunt,i)=>{
-  if(i<3) hunt.classList.add(`top-${i+1}`);
-  ranking.innerHTML+=`<li>TOP ${i+1} — ${hunt.querySelector(".hunt-title").innerText}</li>`;
+sorted.slice(0,5).forEach((hunt,i)=>{
+  hunt.classList.add(`top-${i+1}`);
+  soma+=Number(hunt.dataset.loot);
+  ranking.innerHTML+=`<li>TOP ${i+1} — ${hunt.querySelector(".hunt-title").innerText} (${hunt.dataset.loot} KK)</li>`;
   hunt.style.order=i;
 });
 
+totalTop5.innerText=`💰 Loot total TOP 5: ${soma.toFixed(1)} KK`;
+
 /* FILTROS */
 const search=document.getElementById("search");
-const filterType=document.getElementById("filterType");
+const filterBiome=document.getElementById("filterBiome");
 
 function applyFilters(){
   hunts.forEach(h=>{
-    const okType=!filterType.value||h.classList.contains(filterType.value);
     const okSearch=h.innerText.toLowerCase().includes(search.value.toLowerCase());
-    h.style.display=okType&&okSearch?"":"none";
+    const okBiome=!filterBiome.value||h.classList.contains(filterBiome.value);
+    h.style.display=okSearch&&okBiome?"":"none";
   });
 }
 
-[search,filterType].forEach(el=>el.addEventListener("input",applyFilters));
+[search,filterBiome].forEach(el=>el.addEventListener("input",applyFilters));
 </script>
 
 </body>
