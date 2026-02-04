@@ -27,12 +27,7 @@ body {
   text-decoration: none;
   font-weight: bold;
   box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-  transition: transform 0.2s, opacity 0.2s;
   z-index: 999;
-}
-.back-btn:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
 }
 
 /* CONTAINER */
@@ -61,7 +56,6 @@ body {
   max-width: 420px;
   text-align: center;
   font-weight: bold;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
 /* TABS */
@@ -81,6 +75,7 @@ body {
   cursor: pointer;
   background: #e0e0e0;
 }
+
 .tab-btn.active {
   background: linear-gradient(135deg,#fbc02d,#f57f17);
 }
@@ -99,14 +94,9 @@ body {
   border-radius: 16px;
   text-align: center;
   font-weight: bold;
-  cursor: pointer;
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  transition: transform 0.2s;
   text-decoration: none;
   color: #222;
-}
-.card:hover {
-  transform: scale(1.05);
 }
 
 /* STATUS */
@@ -114,7 +104,6 @@ body {
   display: block;
   margin-top: 6px;
   font-size: 0.9em;
-  font-weight: bold;
 }
 .status.ativo { color: #2e7d32; }
 .status.reservado { color: #f9a825; }
@@ -139,7 +128,7 @@ body {
 
 <div class="shiny-counter">
   ✨ Shinys: <b id="total-shinys">0</b><br>
-  💰 Valor estimado total: <b id="valor-total">0</b><br>
+  💰 Valor total: <b id="valor-total">0</b><br>
   💎 Equivalente: <b id="valor-diamantes">0</b>
 </div>
 
@@ -154,15 +143,15 @@ body {
 <div id="t1b" class="tab-content active">
 <div class="grid">
 
-<a href="#" class="card" data-kk="2200">
+<div class="card" data-kk="2200">
 🐉 Shiny Dragonair
 <span class="status ativo">🟢 Ativo</span>
-</a>
+</div>
 
-<a href="#" class="card" data-kk="1800">
+<div class="card" data-kk="1800">
 ❄️ Shiny Glaceon
 <span class="status reservado">🟡 Reservado</span>
-</a>
+</div>
 
 </div>
 </div>
@@ -171,15 +160,20 @@ body {
 <div id="t1c" class="tab-content">
 <div class="grid">
 
-<a href="#" class="card" data-kk="2000">
+<div class="card" data-kk="2000">
 ⚡ Shiny Luxray
 <span class="status vendido">🔴 Vendido</span>
-</a>
+</div>
 
-<a href="#" class="card" data-kk="1900">
+<div class="card" data-kk="1900">
 🌿 Shiny Tangela
 <span class="status ativo">🟢 Ativo</span>
-</a>
+</div>
+
+<div class="card" data-kk="2100">
+🌱 Shiny Meganium
+<span class="status ativo">🟢 Ativo</span>
+</div>
 
 </div>
 </div>
@@ -188,20 +182,20 @@ body {
 <div id="tm" class="tab-content">
 <div class="grid">
 
-<a href="#" class="card" data-kk="2400">
+<div class="card" data-kk="2400">
 💿 Shiny Machamp
 <span class="status reservado">🟡 Reservado</span>
-</a>
+</div>
 
-<a href="#" class="card" data-kk="2500">
+<div class="card" data-kk="2500">
 💿 Shiny Feraligatr
 <span class="status reservado">🟡 Reservado</span>
-</a>
+</div>
 
-<a href="#" class="card" data-kk="2600">
+<div class="card" data-kk="2600">
 💿 Shiny Blastoise
 <span class="status reservado">🟡 Reservado</span>
-</a>
+</div>
 
 </div>
 </div>
@@ -210,10 +204,10 @@ body {
 <div id="t2" class="tab-content">
 <div class="grid">
 
-<a href="#" class="card" data-kk="3500">
+<div class="card" data-kk="3500">
 🐲 Shiny Druddigon
 <span class="status ativo">🟢 Ativo</span>
-</a>
+</div>
 
 </div>
 </div>
@@ -228,23 +222,21 @@ function openTab(id, btn) {
   btn.classList.add('active');
 }
 
-/* CONTADOR */
 const VALOR_DIAMANTE = 220;
 let totalKK = 0;
 let totalShinys = 0;
 
-document.querySelectorAll("[data-kk]").forEach(p => {
-  totalKK += Number(p.dataset.kk || 0);
+document.querySelectorAll('[data-kk]').forEach(el => {
+  totalKK += Number(el.dataset.kk);
   totalShinys++;
 });
 
-function formatarKK(valor) {
-  return valor >= 1000 ? (valor/1000).toFixed(2) + " KKK" : valor + " KK";
-}
+document.getElementById("valor-total").textContent =
+  (totalKK / 1000).toFixed(2) + " KKK";
 
-document.getElementById("valor-total").textContent = formatarKK(totalKK);
 document.getElementById("valor-diamantes").textContent =
   (totalKK / VALOR_DIAMANTE).toFixed(2) + " 💎";
+
 document.getElementById("total-shinys").textContent = totalShinys;
 </script>
 
