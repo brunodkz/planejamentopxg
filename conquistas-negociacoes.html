@@ -15,7 +15,7 @@ body {
   background-size: 300px;
 }
 
-/* BOTÃO VOLTAR */
+/* BOTÃO MENU */
 .back-btn {
   position: fixed;
   top: 18px;
@@ -116,8 +116,6 @@ body {
   font-size: 0.9em;
   font-weight: bold;
 }
-
-/* CORES POR STATUS */
 .status.ativo { color: #2e7d32; }
 .status.reservado { color: #f9a825; }
 .status.vendido { color: #c62828; }
@@ -130,7 +128,7 @@ body {
 
 <body>
 
-<a href="menu.html" class="back-btn">⬅️ Menu</a>
+<a href="../menu.html" class="back-btn">⬅️ Menu</a>
 
 <div class="container">
 
@@ -148,6 +146,7 @@ body {
 <div class="tabs">
   <button class="tab-btn active" onclick="openTab('t1b', this)">⭐ T1B</button>
   <button class="tab-btn" onclick="openTab('t1c', this)">⭐ T1C</button>
+  <button class="tab-btn" onclick="openTab('tm', this)">💿 TM</button>
   <button class="tab-btn" onclick="openTab('t2', this)">🔥 T2</button>
 </div>
 
@@ -155,27 +154,17 @@ body {
 <div id="t1b" class="tab-content active">
 <div class="grid">
 
-<a href="registro-shiny-dragonair.html" class="card" data-kk="2200">
+<a href="#" class="card" data-kk="2200">
 🐉 Shiny Dragonair
 <span class="status ativo">🟢 Ativo</span>
 </a>
 
-<a href="registro-shiny-feraligatr.html" class="card" data-kk="2500">
-🐊 Shiny Feraligatr
-<span class="status reservado">🟡 Reservado</span>
-</a>
-
-<a href="registro-shiny-blastoise.html" class="card" data-kk="2600">
-💧 Shiny Blastoise
-<span class="status reservado">🟡 Reservado</span>
-</a>
-
-<a href="registro-shiny-machamp.html" class="card" data-kk="2400">
+<a href="#" class="card" data-kk="2400">
 💪 Shiny Machamp
 <span class="status reservado">🟡 Reservado</span>
 </a>
 
-<a href="registro-shiny-glaceon.html" class="card" data-kk="1800">
+<a href="#" class="card" data-kk="1800">
 ❄️ Shiny Glaceon
 <span class="status reservado">🟡 Reservado</span>
 </a>
@@ -187,19 +176,26 @@ body {
 <div id="t1c" class="tab-content">
 <div class="grid">
 
-<a href="registro-shiny-luxray.html" class="card" data-kk="2000">
+<a href="#" class="card" data-kk="2000">
 ⚡ Shiny Luxray
 <span class="status vendido">🔴 Vendido</span>
 </a>
 
-<a href="registro-shiny-tangela.html" class="card" data-kk="1600">
-🌱 Shiny Tangela
-<span class="status vendido">🔴 Vendido</span>
+</div>
+</div>
+
+<!-- TM -->
+<div id="tm" class="tab-content">
+<div class="grid">
+
+<a href="#" class="card" data-kk="2500">
+💿 Shiny Feraligatr
+<span class="status reservado">🟡 Reservado</span>
 </a>
 
-<a href="registro-shiny-meganium.html" class="card" data-kk="2100">
-🌿 Shiny Meganium
-<span class="status vendido">🔴 Vendido</span>
+<a href="#" class="card" data-kk="2600">
+💿 Shiny Blastoise
+<span class="status reservado">🟡 Reservado</span>
 </a>
 
 </div>
@@ -209,7 +205,7 @@ body {
 <div id="t2" class="tab-content">
 <div class="grid">
 
-<a href="registro-shiny-druddigon.html" class="card" data-kk="3500">
+<a href="#" class="card" data-kk="3500">
 🐲 Shiny Druddigon
 <span class="status ativo">🟢 Ativo</span>
 </a>
@@ -227,7 +223,7 @@ function openTab(id, btn) {
   btn.classList.add('active');
 }
 
-/* ===== CONTADOR ===== */
+/* CONTADOR */
 const VALOR_DIAMANTE = 220;
 let totalKK = 0;
 let totalShinys = 0;
