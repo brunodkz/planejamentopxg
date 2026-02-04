@@ -130,7 +130,7 @@ header p{opacity:.7}
 .water{background:linear-gradient(135deg,#020617,#082f49)}
 .desert{background:linear-gradient(135deg,#451a03,#78350f)}
 
-/* TOP */
+/* TOP BADGES */
 .top-1::after,
 .top-2::after,
 .top-3::after{
@@ -184,27 +184,27 @@ header p{opacity:.7}
 <!-- CONTENT -->
 <main class="content" id="hunts">
 
-<a class="hunt-card solo grass" href="hunt-mixed-grass-2026-01-29.html" data-loot="2.6" data-time="2">
+<a class="hunt-card solo grass" data-loot="2.6">
   <div class="hunt-title">🌿 Mixed Grass</div>
   <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 2.6 KK</span></div>
 </a>
 
-<a class="hunt-card solo grass" href="hunt-mixed-grass-sul-2026-02-01.html" data-loot="2.9" data-time="2">
+<a class="hunt-card solo grass" data-loot="2.9">
   <div class="hunt-title">🌿 Mixed Grass (Sul)</div>
   <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 2.9 KK</span></div>
 </a>
 
-<a class="hunt-card solo grass" href="hunt-appleturn-2027-01-30.html" data-loot="3.1" data-time="2">
+<a class="hunt-card solo grass" data-loot="3.1">
   <div class="hunt-title">🍎 Appletun</div>
   <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 3.1 KK</span></div>
 </a>
 
-<a class="hunt-card solo water" href="hunt-sharpedo-2026-02-02.html" data-loot="3.6" data-time="3">
+<a class="hunt-card solo water" data-loot="3.6">
   <div class="hunt-title">🦈 Sharpedo</div>
   <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 3.6 KK</span></div>
 </a>
 
-<a class="hunt-card duo desert" href="hunt-sandaconda-2026-02-05.html" data-loot="7.6" data-time="2">
+<a class="hunt-card duo desert" data-loot="7.6">
   <div class="hunt-title">🐍 Sandaconda</div>
   <div class="badges"><span class="badge">👥 DUO</span><span class="badge">💰 7.6 KK</span></div>
 </a>
@@ -216,15 +216,16 @@ header p{opacity:.7}
 const hunts = [...document.querySelectorAll(".hunt-card")];
 const ranking = document.getElementById("ranking");
 
-/* TOP 3 */
-const topLoot = [...hunts].sort((a,b)=>b.dataset.loot-a.dataset.loot).slice(0,3);
-topLoot.forEach((h,i)=>h.classList.add(`top-${i+1}`));
+/* ===== RANKING DEFINITIVO ===== */
+const sorted = [...hunts].sort((a,b)=>Number(b.dataset.loot)-Number(a.dataset.loot));
 
-ranking.innerHTML = `
-<li>🥇 ${topLoot[0].querySelector(".hunt-title").innerText}</li>
-<li>🥈 ${topLoot[1].querySelector(".hunt-title").innerText}</li>
-<li>🥉 ${topLoot[2].querySelector(".hunt-title").innerText}</li>
-`;
+ranking.innerHTML = "";
+sorted.forEach((hunt,index)=>{
+  if(index < 3) hunt.classList.add(`top-${index+1}`);
+
+  const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : "🔹";
+  ranking.innerHTML += `<li>${medal} TOP ${index+1} — ${hunt.querySelector(".hunt-title").innerText}</li>`;
+});
 
 /* FILTER SYSTEM */
 const search = document.getElementById("search");
