@@ -11,9 +11,6 @@
   --card:#1f2933;
   --solo:#2563eb;
   --duo:#7c3aed;
-  --grass:#16a34a;
-  --water:#0284c7;
-  --desert:#ca8a04;
 }
 
 *{box-sizing:border-box}
@@ -30,8 +27,6 @@ header{
   padding:24px;
   text-align:center;
 }
-header h1{margin:0}
-header p{opacity:.7}
 
 /* GRID */
 .dashboard{
@@ -49,8 +44,6 @@ header p{opacity:.7}
   border-radius:18px;
   padding:20px;
 }
-.sidebar h2{text-align:center;margin-top:0}
-
 .sidebar ul{
   list-style:none;
   padding:0;
@@ -81,7 +74,8 @@ header p{opacity:.7}
 
 /* CONTENT */
 .content{
-  display:grid;
+  display:flex;
+  flex-direction:column;
   gap:18px;
 }
 
@@ -93,38 +87,18 @@ header p{opacity:.7}
   text-decoration:none;
   color:#e5e7eb;
   display:grid;
-  gap:10px;
+  gap:6px;
   position:relative;
   box-shadow:0 8px 25px rgba(0,0,0,.4);
   transition:.2s;
 }
 .hunt-card:hover{transform:scale(1.02)}
 
-.hunt-title{
-  font-size:1.3em;
-  font-weight:bold;
-}
-
-/* BADGES */
-.badges{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-.badge{
-  padding:4px 10px;
-  border-radius:999px;
-  font-size:.75em;
-  font-weight:bold;
-  background:#020617;
-}
-
-/* TYPES */
 .solo{border-left:6px solid var(--solo)}
 .duo{border-left:6px solid var(--duo)}
-.grass{background:linear-gradient(135deg,#052e16,#064e3b)}
-.water{background:linear-gradient(135deg,#020617,#082f49)}
-.desert{background:linear-gradient(135deg,#451a03,#78350f)}
+
+.hunt-title{font-size:1.1em;font-weight:bold}
+.hunt-date{opacity:.7;font-size:.85em}
 
 /* TOP BADGES */
 .top-1::after,
@@ -153,108 +127,96 @@ header p{opacity:.7}
 
 <section class="dashboard">
 
-<!-- SIDEBAR -->
 <aside class="sidebar">
   <h2>🏆 Rankings PXG</h2>
 
   <div class="filters">
     <input type="text" id="search" placeholder="🔍 Buscar hunt...">
-
     <select id="filterType">
-      <option value="">Todos os tipos</option>
+      <option value="">Todos</option>
       <option value="solo">Solo</option>
       <option value="duo">Duo</option>
-    </select>
-
-    <select id="filterBiome">
-      <option value="">Todos os biomas</option>
-      <option value="grass">Grass</option>
-      <option value="water">Water</option>
-      <option value="desert">Desert</option>
     </select>
   </div>
 
   <ul id="ranking"></ul>
 </aside>
 
-<!-- CONTENT -->
 <main class="content" id="hunts">
 
-<a class="hunt-card solo grass" data-loot="2.6">
+<a href="hunts/hunt-2026-01-10-mixed-grass.html"
+   class="hunt-card solo"
+   data-loot="2.6"
+   data-date="2026-01-10">
   <div class="hunt-title">🌿 Mixed Grass</div>
-  <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 2.6 KK</span></div>
+  <div class="hunt-date">📅 10/01/2026 • 💰 2.6 KK</div>
 </a>
 
-<a class="hunt-card solo grass" data-loot="2.9">
+<a href="hunts/hunt-2026-01-12-mixed-grass-sul.html"
+   class="hunt-card solo"
+   data-loot="2.9"
+   data-date="2026-01-12">
   <div class="hunt-title">🌿 Mixed Grass (Sul)</div>
-  <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 2.9 KK</span></div>
+  <div class="hunt-date">📅 12/01/2026 • 💰 2.9 KK</div>
 </a>
 
-<a class="hunt-card solo grass" data-loot="3.1">
+<a href="hunts/hunt-2026-01-15-appletun.html"
+   class="hunt-card solo"
+   data-loot="3.1"
+   data-date="2026-01-15">
   <div class="hunt-title">🍎 Appletun</div>
-  <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 3.1 KK</span></div>
+  <div class="hunt-date">📅 15/01/2026 • 💰 3.1 KK</div>
 </a>
 
-<a class="hunt-card solo water" data-loot="3.6">
+<a href="hunts/hunt-2026-01-18-sharpedo.html"
+   class="hunt-card solo"
+   data-loot="3.6"
+   data-date="2026-01-18">
   <div class="hunt-title">🦈 Sharpedo</div>
-  <div class="badges"><span class="badge">👤 SOLO</span><span class="badge">💰 3.6 KK</span></div>
+  <div class="hunt-date">📅 18/01/2026 • 💰 3.6 KK</div>
 </a>
 
-<a class="hunt-card duo desert" data-loot="7.6">
+<a href="hunts/hunt-2026-01-20-sandaconda.html"
+   class="hunt-card duo"
+   data-loot="7.6"
+   data-date="2026-01-20">
   <div class="hunt-title">🐍 Sandaconda</div>
-  <div class="badges"><span class="badge">👥 DUO</span><span class="badge">💰 7.6 KK</span></div>
+  <div class="hunt-date">📅 20/01/2026 • 💰 7.6 KK</div>
 </a>
 
 </main>
 </section>
 
 <script>
-const hunts = [...document.querySelectorAll(".hunt-card")];
-const ranking = document.getElementById("ranking");
-const huntsContainer = document.getElementById("hunts");
+const hunts=[...document.querySelectorAll(".hunt-card")];
+const ranking=document.getElementById("ranking");
 
-/* ===== RANKING E ORDENACAO DEFINITIVA ===== */
-const sorted = [...hunts].sort(
-  (a, b) => Number(b.dataset.loot) - Number(a.dataset.loot)
+/* ORDENAR POR LOOT */
+const sorted=[...hunts].sort(
+  (a,b)=>Number(b.dataset.loot)-Number(a.dataset.loot)
 );
 
-/* SIDEBAR */
-ranking.innerHTML = "";
-sorted.forEach((hunt, index) => {
-  if (index < 3) hunt.classList.add(`top-${index + 1}`);
-
-  const medal =
-    index === 0 ? "🥇" :
-    index === 1 ? "🥈" :
-    index === 2 ? "🥉" : "🔹";
-
-  ranking.innerHTML += `
-    <li>${medal} TOP ${index + 1} — ${hunt.querySelector(".hunt-title").innerText}</li>
-  `;
+/* Ranking + ordem visual */
+ranking.innerHTML="";
+sorted.forEach((hunt,i)=>{
+  if(i<3) hunt.classList.add(`top-${i+1}`);
+  ranking.innerHTML+=`<li>TOP ${i+1} — ${hunt.querySelector(".hunt-title").innerText}</li>`;
+  hunt.style.order=i;
 });
 
-/* ORDENAR VISUALMENTE OS CARDS */
-huntsContainer.innerHTML = "";
-sorted.forEach(hunt => huntsContainer.appendChild(hunt));
-
-/* FILTER SYSTEM */
-const search = document.getElementById("search");
-const filterType = document.getElementById("filterType");
-const filterBiome = document.getElementById("filterBiome");
+/* FILTROS */
+const search=document.getElementById("search");
+const filterType=document.getElementById("filterType");
 
 function applyFilters(){
   hunts.forEach(h=>{
-    const name = h.innerText.toLowerCase();
-    const typeOk = !filterType.value || h.classList.contains(filterType.value);
-    const biomeOk = !filterBiome.value || h.classList.contains(filterBiome.value);
-    const searchOk = name.includes(search.value.toLowerCase());
-    h.style.display = typeOk && biomeOk && searchOk ? "" : "none";
+    const okType=!filterType.value||h.classList.contains(filterType.value);
+    const okSearch=h.innerText.toLowerCase().includes(search.value.toLowerCase());
+    h.style.display=okType&&okSearch?"":"none";
   });
 }
 
-[search, filterType, filterBiome].forEach(el =>
-  el.addEventListener("input", applyFilters)
-);
+[search,filterType].forEach(el=>el.addEventListener("input",applyFilters));
 </script>
 
 </body>
