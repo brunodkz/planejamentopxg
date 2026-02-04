@@ -49,14 +49,12 @@ header p{opacity:.7}
   border-radius:18px;
   padding:20px;
 }
-
 .sidebar h2{text-align:center;margin-top:0}
 
 .sidebar ul{
   list-style:none;
   padding:0;
 }
-
 .sidebar li{
   padding:10px;
   margin-bottom:8px;
@@ -71,7 +69,6 @@ header p{opacity:.7}
   gap:10px;
   margin-bottom:16px;
 }
-
 .filters input,
 .filters select{
   padding:10px;
@@ -114,7 +111,6 @@ header p{opacity:.7}
   gap:8px;
   flex-wrap:wrap;
 }
-
 .badge{
   padding:4px 10px;
   border-radius:999px;
@@ -215,17 +211,31 @@ header p{opacity:.7}
 <script>
 const hunts = [...document.querySelectorAll(".hunt-card")];
 const ranking = document.getElementById("ranking");
+const huntsContainer = document.getElementById("hunts");
 
-/* ===== RANKING DEFINITIVO ===== */
-const sorted = [...hunts].sort((a,b)=>Number(b.dataset.loot)-Number(a.dataset.loot));
+/* ===== RANKING E ORDENACAO DEFINITIVA ===== */
+const sorted = [...hunts].sort(
+  (a, b) => Number(b.dataset.loot) - Number(a.dataset.loot)
+);
 
+/* SIDEBAR */
 ranking.innerHTML = "";
-sorted.forEach((hunt,index)=>{
-  if(index < 3) hunt.classList.add(`top-${index+1}`);
+sorted.forEach((hunt, index) => {
+  if (index < 3) hunt.classList.add(`top-${index + 1}`);
 
-  const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : "🔹";
-  ranking.innerHTML += `<li>${medal} TOP ${index+1} — ${hunt.querySelector(".hunt-title").innerText}</li>`;
+  const medal =
+    index === 0 ? "🥇" :
+    index === 1 ? "🥈" :
+    index === 2 ? "🥉" : "🔹";
+
+  ranking.innerHTML += `
+    <li>${medal} TOP ${index + 1} — ${hunt.querySelector(".hunt-title").innerText}</li>
+  `;
 });
+
+/* ORDENAR VISUALMENTE OS CARDS */
+huntsContainer.innerHTML = "";
+sorted.forEach(hunt => huntsContainer.appendChild(hunt));
 
 /* FILTER SYSTEM */
 const search = document.getElementById("search");
@@ -238,12 +248,13 @@ function applyFilters(){
     const typeOk = !filterType.value || h.classList.contains(filterType.value);
     const biomeOk = !filterBiome.value || h.classList.contains(filterBiome.value);
     const searchOk = name.includes(search.value.toLowerCase());
-
     h.style.display = typeOk && biomeOk && searchOk ? "" : "none";
   });
 }
 
-[search, filterType, filterBiome].forEach(el=>el.addEventListener("input", applyFilters));
+[search, filterType, filterBiome].forEach(el =>
+  el.addEventListener("input", applyFilters)
+);
 </script>
 
 </body>
