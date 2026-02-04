@@ -31,13 +31,11 @@ body{
   color:#e5e7eb;
 }
 
-/* HEADER */
 header{
   padding:24px;
   text-align:center;
 }
 
-/* GRID */
 .dashboard{
   display:grid;
   grid-template-columns:300px 1fr;
@@ -47,7 +45,6 @@ header{
   padding:20px;
 }
 
-/* SIDEBAR */
 .sidebar{
   background:var(--panel);
   border-radius:18px;
@@ -65,7 +62,6 @@ header{
   font-weight:bold;
 }
 
-/* FILTERS */
 .filters{
   display:grid;
   gap:10px;
@@ -81,14 +77,12 @@ header{
   font-weight:bold;
 }
 
-/* CONTENT */
 .content{
   display:flex;
   flex-direction:column;
   gap:18px;
 }
 
-/* CARD */
 .hunt-card{
   border-radius:18px;
   padding:18px;
@@ -112,7 +106,6 @@ header{
 .hunt-title{font-size:1.15em;font-weight:bold}
 .hunt-meta{opacity:.8;font-size:.85em}
 
-/* TOP BADGES */
 .top-1::after,
 .top-2::after,
 .top-3::after,
@@ -163,35 +156,35 @@ header{
 
 <main class="content" id="hunts">
 
-<a href="hunts/hunt-mixed-grass-2027-01-10.html"
+<a href="hunt-mixed-grass-2027-01-10.html"
    class="hunt-card solo grass"
    data-loot="2.6">
   <div class="hunt-title">🌿 Mixed Grass</div>
   <div class="hunt-meta">📅 10/01/2027 • 💰 2.6 KK</div>
 </a>
 
-<a href="hunts/hunt-mixed-grass-sul-2027-01-12.html"
+<a href="hunt-mixed-grass-sul-2027-01-12.html"
    class="hunt-card solo grass"
    data-loot="2.9">
   <div class="hunt-title">🌿 Mixed Grass (Sul)</div>
   <div class="hunt-meta">📅 12/01/2027 • 💰 2.9 KK</div>
 </a>
 
-<a href="hunts/hunt-appletun-2027-01-30.html"
+<a href="hunt-appletun-2027-01-30.html"
    class="hunt-card solo grass"
    data-loot="3.1">
   <div class="hunt-title">🍎 Appletun</div>
   <div class="hunt-meta">📅 30/01/2027 • 💰 3.1 KK</div>
 </a>
 
-<a href="hunts/hunt-sharpedo-2027-02-02.html"
+<a href="hunt-sharpedo-2027-02-02.html"
    class="hunt-card solo water"
    data-loot="3.6">
   <div class="hunt-title">🦈 Sharpedo</div>
   <div class="hunt-meta">📅 02/02/2027 • 💰 3.6 KK</div>
 </a>
 
-<a href="hunts/hunt-sandaconda-2027-02-10.html"
+<a href="hunt-sandaconda-2027-02-10.html"
    class="hunt-card duo earth"
    data-loot="7.6">
   <div class="hunt-title">🐍 Sandaconda</div>
@@ -206,12 +199,10 @@ const hunts=[...document.querySelectorAll(".hunt-card")];
 const ranking=document.getElementById("ranking");
 const totalTop5=document.getElementById("totalTop5");
 
-/* ORDENAR */
 const sorted=[...hunts].sort(
   (a,b)=>Number(b.dataset.loot)-Number(a.dataset.loot)
 );
 
-/* TOP 5 */
 let soma=0;
 ranking.innerHTML="";
 sorted.slice(0,5).forEach((hunt,i)=>{
@@ -223,7 +214,6 @@ sorted.slice(0,5).forEach((hunt,i)=>{
 
 totalTop5.innerText=`💰 Loot total TOP 5: ${soma.toFixed(1)} KK`;
 
-/* FILTROS */
 const search=document.getElementById("search");
 const filterBiome=document.getElementById("filterBiome");
 
