@@ -3,225 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📅 Histórico de Hunts • PXG</title>
+<title>📊 Dashboard PXG • Histórico de Hunts</title>
 
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: url("../assets/pokeballs-bg-v2.png") repeat;
-  background-size: 300px;
+:root{
+  --bg:#0f172a;
+  --panel:#111827;
+  --card:#1f2933;
+  --solo:#2563eb;
+  --duo:#7c3aed;
+  --grass:#16a34a;
+  --water:#0284c7;
+  --desert:#ca8a04;
 }
 
-/* VOLTAR */
-.back-btn {
-  position: fixed;
-  top: 18px;
-  left: 18px;
-  background: linear-gradient(135deg,#c62828,#8e0000);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Segoe UI,Arial;
+  background:linear-gradient(135deg,#020617,#0f172a);
+  color:#e5e7eb;
 }
 
-/* CONTAINER */
-.container {
-  max-width: 950px;
-  margin: 70px auto 40px;
-  background: rgba(255,255,255,0.96);
-  padding: 26px;
-  border-radius: 18px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+/* HEADER */
+header{
+  padding:24px;
+  text-align:center;
+}
+header h1{margin:0;font-size:2em}
+header p{opacity:.7}
+
+/* GRID */
+.dashboard{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:24px;
+  max-width:1300px;
+  margin:auto;
+  padding:20px;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 20px;
+/* SIDEBAR */
+.sidebar{
+  background:var(--panel);
+  border-radius:18px;
+  padding:20px;
 }
 
-/* RANKING PXG */
-.ranking {
-  background: #212121;
-  color: #fff;
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 25px;
+.sidebar h2{
+  text-align:center;
+  margin-top:0;
 }
 
-.ranking h2 {
-  margin-top: 0;
-  text-align: center;
+.sidebar ul{
+  list-style:none;
+  padding:0;
+}
+.sidebar li{
+  padding:10px;
+  margin-bottom:8px;
+  background:#020617;
+  border-radius:12px;
+  font-weight:bold;
 }
 
-.ranking ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* CONTENT */
+.content{
+  display:grid;
+  gap:18px;
 }
 
-.ranking li {
-  padding: 6px 0;
-  font-weight: bold;
+/* CARD */
+.hunt-card{
+  background:var(--card);
+  border-radius:18px;
+  padding:18px;
+  text-decoration:none;
+  color:#e5e7eb;
+  display:grid;
+  gap:10px;
+  position:relative;
+  box-shadow:0 8px 25px rgba(0,0,0,.4);
+  transition:.2s;
+}
+.hunt-card:hover{transform:scale(1.02)}
+
+.hunt-title{
+  font-size:1.3em;
+  font-weight:bold;
 }
 
-/* FILTROS */
-.filters {
-  display: grid;
-  gap: 12px;
-  margin-bottom: 25px;
+/* BADGES */
+.badges{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
-.filters input,
-.filters select {
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-weight: bold;
+.badge{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:.75em;
+  font-weight:bold;
+  background:#020617;
 }
 
-/* LISTA */
-.hunt-list {
-  display: grid;
-  gap: 18px;
+/* TYPE COLORS */
+.solo{border-left:6px solid var(--solo)}
+.duo{border-left:6px solid var(--duo)}
+.grass{background:linear-gradient(135deg,#052e16,#064e3b)}
+.water{background:linear-gradient(135deg,#020617,#082f49)}
+.desert{background:linear-gradient(135deg,#451a03,#78350f)}
+
+/* TOP */
+.top-1::after,
+.top-2::after,
+.top-3::after{
+  position:absolute;
+  top:-12px;
+  right:14px;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:.75em;
+  font-weight:bold;
 }
 
-.hunt-card {
-  background: #f7f7f7;
-  border-radius: 18px;
-  padding: 18px 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  text-decoration: none;
-  color: #222;
-  transition: transform 0.2s;
-  position: relative;
-}
-
-.hunt-card:hover {
-  transform: scale(1.03);
-}
-
-.hunt-title {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-.hunt-meta {
-  margin-top: 8px;
-  font-size: 0.95em;
-  color: #444;
-}
-
-/* TOP 3 */
-.top-1 { border: 3px solid #fbc02d; background: #fffde7; }
-.top-2 { border: 3px dashed #b0bec5; }
-.top-3 { border: 3px dashed #cd7f32; }
-
-.top-1::before,
-.top-2::before,
-.top-3::before {
-  position: absolute;
-  top: -12px;
-  right: 16px;
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.75em;
-}
-
-.top-1::before { content: "🥇 TOP 1"; background:#fbc02d; }
-.top-2::before { content: "🥈 TOP 2"; background:#b0bec5; }
-.top-3::before { content: "🥉 TOP 3"; background:#cd7f32; }
-
+.top-1::after{content:"🥇 TOP 1";background:#facc15;color:#000}
+.top-2::after{content:"🥈 TOP 2";background:#cbd5e1;color:#000}
+.top-3::after{content:"🥉 TOP 3";background:#cd7f32;color:#000}
 </style>
 </head>
 
 <body>
 
-<a href="../planejamentos-gerais.html" class="back-btn">⬅️ Planejamentos</a>
+<header>
+  <h1>📊 Dashboard PXG</h1>
+  <p>Eficiência • Inteligência • Decisão</p>
+</header>
 
-<div class="container">
+<section class="dashboard">
 
-<div class="header">
-  <h1>📅 Histórico de Hunts</h1>
-  <p>Eficiência • decisão • inteligência PXG</p>
-</div>
-
-<!-- 🏆 RANKING PXG -->
-<div class="ranking">
+<!-- SIDEBAR -->
+<aside class="sidebar">
   <h2>🏆 Rankings PXG</h2>
-  <ul id="rankingList"></ul>
-</div>
+  <ul id="ranking"></ul>
+</aside>
 
-<!-- FILTROS -->
-<div class="filters">
-  <input type="text" id="playerFilter" placeholder="👥 Filtrar por player">
-  <input type="number" id="lootFilter" placeholder="💰 Loot mínimo (KK)" step="0.1">
-  <select id="dateFilter">
-    <option value="">📅 Ordenar por data</option>
-    <option value="desc">Mais recente</option>
-    <option value="asc">Mais antiga</option>
-  </select>
-</div>
+<!-- CONTENT -->
+<main class="content">
 
-<div class="hunt-list">
-
-<a class="hunt-card" data-date="2026-01-27" data-loot="7.6" data-time="2" data-players="2">
-  <div class="hunt-title">🐍 Sandaconda</div>
-  <div class="hunt-meta">Duo • 2h • 7.6 KK</div>
-</a>
-
-<a class="hunt-card" data-date="2026-01-29" data-loot="2.6" data-time="2" data-players="1">
+<a class="hunt-card solo grass" data-loot="2.6" data-time="2" data-players="1">
   <div class="hunt-title">🌿 Mixed Grass</div>
-  <div class="hunt-meta">Solo • 2h • 2.6 KK</div>
+  <div class="badges">
+    <span class="badge">👤 SOLO</span>
+    <span class="badge">💰 2.6 KK</span>
+    <span class="badge">⏱️ 2h</span>
+  </div>
 </a>
 
-<a class="hunt-card" data-date="2026-02-01" data-loot="3.6" data-time="3" data-players="1">
+<a class="hunt-card solo water" data-loot="3.6" data-time="3" data-players="1">
   <div class="hunt-title">🦈 Sharpedo</div>
-  <div class="hunt-meta">Solo • 3h • 3.6 KK</div>
+  <div class="badges">
+    <span class="badge">👤 SOLO</span>
+    <span class="badge">💰 3.6 KK</span>
+    <span class="badge">⏱️ 3h</span>
+  </div>
 </a>
 
-<a class="hunt-card" data-date="2027-01-30" data-loot="1.6" data-time="1" data-players="1">
-  <div class="hunt-title">🍏 Appletun</div>
-  <div class="hunt-meta">Solo • 1h • 1.6 KK</div>
+<a class="hunt-card duo desert" data-loot="7.6" data-time="2" data-players="2">
+  <div class="hunt-title">🐍 Sandaconda</div>
+  <div class="badges">
+    <span class="badge">👥 DUO</span>
+    <span class="badge">💰 7.6 KK</span>
+    <span class="badge">⏱️ 2h</span>
+  </div>
 </a>
 
-<a class="hunt-card" data-date="2026-02-01" data-loot="1.3" data-time="1" data-players="1">
-  <div class="hunt-title">🌿 Mixed Grass (Sul)</div>
-  <div class="hunt-meta">Solo • 1h • 1.3 KK</div>
-</a>
-
-</div>
-</div>
+</main>
+</section>
 
 <script>
-const hunts = [...document.querySelectorAll(".hunt-card")];
-const ranking = document.getElementById("rankingList");
+const hunts=[...document.querySelectorAll(".hunt-card")];
+const ranking=document.getElementById("ranking");
 
 /* TOP 3 */
-hunts
-  .sort((a,b)=>b.dataset.loot-a.dataset.loot)
+hunts.sort((a,b)=>b.dataset.loot-a.dataset.loot)
   .slice(0,3)
   .forEach((h,i)=>h.classList.add(`top-${i+1}`));
 
-/* RANKINGS */
-const bestLoot = hunts.reduce((a,b)=>b.dataset.loot>a.dataset.loot?b:a);
-const bestKkh = hunts.reduce((a,b)=>
-  (b.dataset.loot/b.dataset.time)>(a.dataset.loot/a.dataset.time)?b:a);
-const bestSolo = hunts.filter(h=>h.dataset.players==1)
-  .reduce((a,b)=>b.dataset.loot>a.dataset.loot?b:a);
-const bestDuo = hunts.filter(h=>h.dataset.players>1)
-  .reduce((a,b)=>b.dataset.loot>a.dataset.loot?b:a, null);
+const bestLoot=hunts[0];
+const bestKkh=[...hunts].sort((a,b)=>
+(b.dataset.loot/b.dataset.time)-(a.dataset.loot/a.dataset.time))[0];
 
-ranking.innerHTML = `
+ranking.innerHTML=`
 <li>🥇 Maior Loot: ${bestLoot.querySelector(".hunt-title").innerText}</li>
 <li>⚡ Melhor KK/h: ${bestKkh.querySelector(".hunt-title").innerText}</li>
-<li>👤 Melhor Solo: ${bestSolo.querySelector(".hunt-title").innerText}</li>
-${bestDuo ? `<li>👥 Melhor Duo: ${bestDuo.querySelector(".hunt-title").innerText}</li>` : ""}
 `;
 </script>
 
