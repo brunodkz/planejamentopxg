@@ -153,7 +153,10 @@ header p{opacity:.7}
 <!-- CONTENT -->
 <main class="content">
 
-<a class="hunt-card solo grass" data-loot="2.6" data-time="2" data-players="1">
+<!-- MIXED GRASS -->
+<a class="hunt-card solo grass"
+   href="hunt-mixed-grass-2026-01-29.html"
+   data-loot="2.6" data-time="2">
   <div class="hunt-title">🌿 Mixed Grass</div>
   <div class="badges">
     <span class="badge">👤 SOLO</span>
@@ -162,7 +165,34 @@ header p{opacity:.7}
   </div>
 </a>
 
-<a class="hunt-card solo water" data-loot="3.6" data-time="3" data-players="1">
+<!-- MIXED GRASS SUL -->
+<a class="hunt-card solo grass"
+   href="hunt-mixed-grass-sul-2026-02-01.html"
+   data-loot="2.9" data-time="2">
+  <div class="hunt-title">🌿 Mixed Grass (Sul)</div>
+  <div class="badges">
+    <span class="badge">👤 SOLO</span>
+    <span class="badge">💰 2.9 KK</span>
+    <span class="badge">⏱️ 2h</span>
+  </div>
+</a>
+
+<!-- APPLETURN -->
+<a class="hunt-card solo grass"
+   href="hunt-appleturn-2027-01-30.html"
+   data-loot="3.1" data-time="2">
+  <div class="hunt-title">🍎 Appletun</div>
+  <div class="badges">
+    <span class="badge">👤 SOLO</span>
+    <span class="badge">💰 3.1 KK</span>
+    <span class="badge">⏱️ 2h</span>
+  </div>
+</a>
+
+<!-- SHARPEDO -->
+<a class="hunt-card solo water"
+   href="hunt-sharpedo-2026-02-02.html"
+   data-loot="3.6" data-time="3">
   <div class="hunt-title">🦈 Sharpedo</div>
   <div class="badges">
     <span class="badge">👤 SOLO</span>
@@ -171,7 +201,10 @@ header p{opacity:.7}
   </div>
 </a>
 
-<a class="hunt-card duo desert" data-loot="7.6" data-time="2" data-players="2">
+<!-- SANDACONDA -->
+<a class="hunt-card duo desert"
+   href="hunt-sandaconda-2026-02-05.html"
+   data-loot="7.6" data-time="2">
   <div class="hunt-title">🐍 Sandaconda</div>
   <div class="badges">
     <span class="badge">👥 DUO</span>
@@ -184,21 +217,20 @@ header p{opacity:.7}
 </section>
 
 <script>
-const hunts=[...document.querySelectorAll(".hunt-card")];
-const ranking=document.getElementById("ranking");
+const hunts = [...document.querySelectorAll(".hunt-card")];
+const ranking = document.getElementById("ranking");
 
-/* TOP 3 */
-hunts.sort((a,b)=>b.dataset.loot-a.dataset.loot)
-  .slice(0,3)
-  .forEach((h,i)=>h.classList.add(`top-${i+1}`));
+/* TOP 3 POR LOOT */
+const topLoot = [...hunts]
+  .sort((a,b)=>b.dataset.loot - a.dataset.loot)
+  .slice(0,3);
 
-const bestLoot=hunts[0];
-const bestKkh=[...hunts].sort((a,b)=>
-(b.dataset.loot/b.dataset.time)-(a.dataset.loot/a.dataset.time))[0];
+topLoot.forEach((h,i)=>h.classList.add(`top-${i+1}`));
 
-ranking.innerHTML=`
-<li>🥇 Maior Loot: ${bestLoot.querySelector(".hunt-title").innerText}</li>
-<li>⚡ Melhor KK/h: ${bestKkh.querySelector(".hunt-title").innerText}</li>
+ranking.innerHTML = `
+  <li>🥇 TOP 1: ${topLoot[0].querySelector(".hunt-title").innerText}</li>
+  <li>🥈 TOP 2: ${topLoot[1].querySelector(".hunt-title").innerText}</li>
+  <li>🥉 TOP 3: ${topLoot[2].querySelector(".hunt-title").innerText}</li>
 `;
 </script>
 
